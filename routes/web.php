@@ -23,8 +23,16 @@ Route::get('/login', ['as'=>'login','uses'=>'Auth\LoginController@getLogin']);
 Route::post('/login', ['as'=>'login','uses'=>'Auth\LoginController@postLogin']); 
 Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout']); 
 
+Route::get('/home', function () {
+    return view('client.trangchu');
+});
+Route::get('/store', function () {
+    return view('client.sanpham');
+});
 
 Route::middleware(['auth'])->group(function(){
+   
+
     Route::get('/test', 'Test1Controller@index')->name('route_BackEnd_Uesr_Index');
     Route::match(['get','post'],'test1/add','Test1Controller@add')->name('route_BackEnd_Uesr_Add');
 

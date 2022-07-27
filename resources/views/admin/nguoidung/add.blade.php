@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.layoutadmin')
 @section('title', $_title)
 @section('content')
     <!-- Main content -->

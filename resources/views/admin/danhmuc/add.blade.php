@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.layoutadmin')
 @section('title', 'thêm danh mục')
 @section('content')
     <!-- Main content -->

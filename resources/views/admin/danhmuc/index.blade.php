@@ -1,7 +1,7 @@
 @php
    
 @endphp
-@extends('templates.layout')
+@extends('templates.layoutadmin')
 @section('title', 'danh muc')
 @section('css')
     <style>

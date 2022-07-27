@@ -69,4 +69,7 @@ class Test1Controller extends Controller
         $this->v['objitem'] = $objitem;
         return view('users.detail', $this->v);
     }
+    public function admin(){
+        return view('templates.adminnew');
+    }
 }

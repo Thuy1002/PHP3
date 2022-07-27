@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.layoutadmin')
 @section('title', 'san pham')
 @section('css')
     <style>
