@@ -26,7 +26,7 @@ class danhmuc extends Model
     }
     public function Savedm($params){
         $data = array_merge($params['cols'],[
-            'danh_muc'=>Hash::make($params['cols']['ten_danhmuc']),
+            'ten_danhmuc'=>Hash::make($params['cols']['ten_danhmuc']),
         ]);
         $res  = DB::table($this->table)->insertGetId($data);
         return $res;
