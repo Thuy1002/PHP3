@@ -75,7 +75,5 @@ class spController extends Controller
         return view('admin.sanpham.add', $this->v);
     }
 
-
-
     
 }
