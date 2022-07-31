@@ -35,7 +35,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/test', 'Test1Controller@index')->name('route_BackEnd_Uesr_Index');
     Route::match(['get','post'],'test1/add','Test1Controller@add')->name('route_BackEnd_Uesr_Add');
-    Route::get('test1/detail/{id}', 'Test1Controller@detail')->name('route_BackEnd_Uesr_detail');
+    Route::get('test/detail/{id}', 'Test1Controller@detail')->name('route_BackEnd_Uesr_detail');
+    Route::post('test/update/{id}', 'Test1Controller@update')->name('route_BackEnd_Uesr_update');
     // Route::delete('test1/delete/{id}', 'Test1Controller@destroy')->name('route_BackEnd_Uesr_delete');
 
     Route::get('/danhmuc', 'DmController@index')->name('route_BackEnd_Danhmuc_Index');

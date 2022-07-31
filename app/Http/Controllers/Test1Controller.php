@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\test1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class Test1Controller extends Controller
@@ -64,17 +65,37 @@ class Test1Controller extends Controller
     {
         $this->v['title'] = " chi tiết người dùng";
         $test = new test1();
-        $objitem  = $test->loadOne($id);
+        $objitem  = $test ->loadOne($id);
         // dd($objitem);
         $this->v['objitem'] = $objitem;
         return view('admin.nguoidung.detail', $this->v);
     }
-    // public function destroy($id){
-    //     $news = new test1($id);
-
-    //     $news->delete();
-    //     return redirect()->action('admin.nguoidung.index')->with('success','Dữ liệu xóa thành công.');
-    // }
-    
-  
+    public function update($id,Request $request){
+        $method_route_detail = "route_BackEnd_Uesr_detail";
+        $method_router_index = "route_BackEnd_Uesr_Index";
+        $params = []; 
+        $params['cols'] = array_map(function($item){
+            if($item == '')
+            $item = null;
+            if(is_string($item))
+            $item = trim($item);
+            return $item;
+        },$request->post());
+        unset($params['cols']['_token']);
+        $params['cols']['id'] = $id;
+        $params['cols']['password']  = Hash::make($params['cols']['password']);
+        $test = new test1();
+        $res = $test->Saveupdate($params);
+        if($res == null){
+            return redirect()->route($method_route_detail,['id'=>$id]);
+        }
+        elseif($res == 1){
+            Session::flash('success','cập nhật bản ghi '.$id.'thành công');
+            return redirect()->route($method_router_index,['id'=>$id]);
+        }
+        else{
+            Session::flash('success','lỗi cập nhật bản ghi '.$id);
+            return redirect()->route($method_route_detail,['id'=>$id]);
+        }
+    }
 }

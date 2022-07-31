@@ -70,7 +70,7 @@
     @endif
 
     <!-- Phần nội dung riêng của action  -->
-        <form class="form-horizontal " action="" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{route('route_BackEnd_Uesr_update',['id'=>request()->route('id')])}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="row">
@@ -90,13 +90,13 @@
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
                                 <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset">
                                 <span id="mes_sdt"></span>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>

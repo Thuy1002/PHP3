@@ -44,6 +44,9 @@ class DmController extends Controller
         redirect()->route($method_route);
     } elseif ($res > 0) {
         Session::flash('success', 'Thêm mới thành công danh mục');
+       
+        return   redirect()->route($method_route);
+
     } else {
         Session::flash('arro', 'Lỗi thêm danh mục');
         redirect()->route($method_route);

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class test1 extends Model
 {
@@ -39,5 +40,23 @@ class test1 extends Model
         $query = DB::table($this->table)->where('id','=', $id);
         $obj = $query->first();
         return $obj;
+    }
+    public function Saveupdate($params)
+    {
+      if(empty($params['cols']['id'])){
+        Session::flash('erro','không xác định được bản ghi cập nhật');
+        return null;
+      }
+      $data_update = [];
+      foreach($params['cols'] as $colName =>$val){
+        if($colName == 'id') continue;
+        if(in_array($colName,$this->fillable)){
+            $data_update[$colName] = (strlen($val) == 0)? null : $val;
+
+        }
+      }
+      $res = DB::table($this->table)->where('id',$params['cols']['id'])
+      ->update($data_update);
+      return $res;
     }
 }
