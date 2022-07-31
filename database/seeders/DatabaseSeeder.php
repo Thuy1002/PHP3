@@ -55,12 +55,6 @@ class DatabaseSeeder extends Seeder
             "updated_at"=>date("y-m-d H:i:s"),
            
           ];
-          $danhmuc[$i] = [
-            'ten_danhmuc'=>"Iphone",
-            "created_at"=>date("y-m-d H:i:s"),
-            "updated_at"=>date("y-m-d H:i:s"),
-           
-          ];
           $khachhang[$i] = [
             'ten_kh'=>"Abc".$i,
             'email' => 'abc'.$i.'@gmail.com',
@@ -113,6 +107,14 @@ class DatabaseSeeder extends Seeder
         "updated_at"=>date("y-m-d H:i:s"),
     ];
       }
+      for($i = 1;$i<4;$i++){
+      $danhmuc[$i] = [
+        'ten_danhmuc'=>"Iphone",
+        "created_at"=>date("y-m-d H:i:s"),
+        "updated_at"=>date("y-m-d H:i:s"),
+       
+      ];
+    }
       DB::table('khach_hang')->insert($khachhang);
       DB::table('hoa_don')->insert($hoadon);
       DB::table('khuyen_mai')->insert($khuyenmai);

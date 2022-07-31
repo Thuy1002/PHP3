@@ -1,5 +1,5 @@
 @extends('templates.layoutadmin')
-@section('title', 'thêm danh mục')
+@section('title', 'chi tiet nguoi dung')
 @section('content')
     <!-- Main content -->
     <section class="content appTuyenSinh">
@@ -76,14 +76,27 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên danh mục <span class="text-danger">(*)</span></label>
+                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên người dùng <span class="text-danger">(*)</span></label>
 
                             <div class="col-md-9 col-sm-8">
-                                <input type="text" name="ten_danhmuc" id="" class="form-control" value="@isset($request['ten_danhmuc']){{ $request['ten_danhmuc'] }}@endisset">
+                                <input type="text" name="name" id="name" class="form-control" value="{{$objitem ->name}}">
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
-                       
+                        <div class="form-group">
+                            <label for="email" class="col-md-3 col-sm-4 control-label">Email <span class="text-danger">(*)</span></label>
+                            <div class="col-md-9 col-sm-8">
+                                <input type="text" name="email" id="email" class="form-control" value="{{$objitem ->email}}">
+                                <span id="mes_sdt"></span>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span class="text-danger">(*)</span></label>
+                            <div class="col-md-9 col-sm-8">
+                                <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset">
+                                <span id="mes_sdt"></span>
+                            </div>
+                        </div> --}}
 
                     </div>
                 </div>

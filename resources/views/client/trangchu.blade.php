@@ -65,13 +65,15 @@
 					<!-- section title -->
 					<div class="col-md-12">
 						<div class="section-title">
-							<h3 class="title">New Products</h3>
+							<h3 class="title">Sản Phẩm HOT</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-									<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-									<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-									<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+									@foreach($dm as $d)
+									{{-- <li class="active"><a data-toggle="tab" href="#tab1"></a></li> --}}
+									{{-- <li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
+									<li><a data-toggle="tab" href="#tab1">Cameras</a></li> --}}
+									<li><a data-toggle="tab" href="#tab1">{{$d->ten_danhmuc}}</a></li> 
+									@endforeach
 								</ul>
 							</div>
 						</div>
@@ -86,17 +88,19 @@
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
 										<!-- product -->
+										@foreach($Listsp as $l)
 										<div class="product">
 											<div class="product-img">
-												<img src="../clientA/img/product01.png" alt="">
+												{{-- <img src="../clientA/img/product01.png" alt=""> --}}
+												<img src="{{asset('storage/images/'.$l->hinh_anh)}}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category">Category</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+												{{-- <p class="product-category">Category</p> --}}
+												<h3 class="product-name"><a href="#">{{$l->ten_sp}}</a></h3>
 												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -115,10 +119,11 @@
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
 										</div>
+										@endforeach
 										<!-- /product -->
 
 										<!-- product -->
-										<div class="product">
+										{{-- <div class="product">
 											<div class="product-img">
 												<img src="../clientA/img/product02.png" alt="">
 												<div class="product-label">
@@ -227,7 +232,7 @@
 											<div class="add-to-cart">
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
-										</div>
+										</div> --}}
 										<!-- /product -->
 									</div>
 									<div id="slick-nav-1" class="products-slick-nav"></div>

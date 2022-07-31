@@ -34,4 +34,10 @@ class test1 extends Model
         $res = DB::table($this->table)->insertGetId($data);
         return $res;
     }
+    public function loadOne($id,$params = null)
+    {
+        $query = DB::table($this->table)->where('id','=', $id);
+        $obj = $query->first();
+        return $obj;
+    }
 }

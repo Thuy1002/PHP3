@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class danhmuc extends Model
 {
     use HasFactory;
-    protected  $table = "danh_muc";
+    protected  $table = 'danh_muc';
     protected $fillable = ['id','ten_danhmuc'];
      public function listdanhmuc($params = []) //show theo phân trang
     {
@@ -25,9 +25,7 @@ class danhmuc extends Model
 // df
     }
     public function Savedm($params){
-        $data = array_merge($params['cols'],[
-            'ten_danhmuc'=>Hash::make($params['cols']['ten_danhmuc']),
-        ]);
+        $data = array_merge($params['cols']);
         $res  = DB::table($this->table)->insertGetId($data);
         return $res;
     }

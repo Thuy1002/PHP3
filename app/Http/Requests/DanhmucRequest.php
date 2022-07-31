@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SanphamRequest extends FormRequest
+class DanhmucRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SanphamRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -31,11 +31,8 @@ class SanphamRequest extends FormRequest
                 switch ($currentAction) {
                     case 'add':
                         $rules = [
-                            'ten_sp' => "required | unique:san_pham", //unique duy nhất 
-                            'gia' => "required ",
-                            'so_luong' => "required ",
-                            'hinh_anh' => "required | file  ",
-                            'id_danhmuc' => "required ",
+                            'ten_danhmuc' => "required | unique:danh_muc", //unique duy nhất 
+                           
                         ];
                         break;
                     default:
@@ -51,19 +48,12 @@ class SanphamRequest extends FormRequest
                 return $rules;
         
     }
-     public function messages()
-     {
-        return [
-            'ten_sp.required'=>"Chưa nhập tên sản phẩm",
-            'ten_sp.unique'=>"Tên sẩn phẩm đã tồn tại",
-            'gia.required'=>"Chưa nhập giá",
-            'so_luong.required'=>"Chưa nhập số lượng",
-            // 'so_luong.min'=>"số lượng lớn hơn 1",
-            'hinh_anh.required'=>"chưa có ảnh",
-            'hinh_anh.file'=>"phải là file ảnh được tải lên",
-            'id_danhmuc.required'=>"Chưa chọn danh mục",
-            
-        ];
-     }
-   
+    public function messages()
+    {
+       return [
+           'ten_danhmuc.required'=>"Chưa nhập tên danh mục",
+           'ten_danhmuc.unique'=>"Tên danh mục đã tồn tại",
+       ];
+    }
+  
 }

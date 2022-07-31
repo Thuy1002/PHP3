@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DanhmucRequest;
 use App\Models\danhmuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +21,7 @@ class DmController extends Controller
     return view('admin.danhmuc.index',$this->v);
   }
   public function add(Request $request ){
-   $method_route = 'route_BackEnd_Danhmuc_Add';
+   $method_route = 'route_BackEnd_Danhmuc_Index';
    if ($request->isMethod('post')) {
     $params = [];
     $params['cols'] = array_map(

@@ -67,9 +67,14 @@ class Test1Controller extends Controller
         $objitem  = $test->loadOne($id);
         // dd($objitem);
         $this->v['objitem'] = $objitem;
-        return view('users.detail', $this->v);
+        return view('admin.nguoidung.detail', $this->v);
     }
-    public function admin(){
-        return view('templates.adminnew');
-    }
+    // public function destroy($id){
+    //     $news = new test1($id);
+
+    //     $news->delete();
+    //     return redirect()->action('admin.nguoidung.index')->with('success','Dữ liệu xóa thành công.');
+    // }
+    
+  
 }
