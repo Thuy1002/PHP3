@@ -166,8 +166,7 @@
                                         style="white-space:unset;text-align: justify;"> {{$l ->ten_danhmuc}} <i class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Danhmuc_del',[$l->id]) }}">Xóa</a>
-                                    <a class="btn btn-primary" href="">Sửa</a></td>
-
+                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Danhmuc_detail',[$l->id]) }}" >Sửa</a></td>
                             </tr>
                         @endforeach
 

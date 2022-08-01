@@ -61,18 +61,18 @@ class Test1Controller extends Controller
         }
         return view('admin.nguoidung.add', $this->v);
     }
-    public function detail($id, Request $request)
+    public function detailNd($id, Request $request)
     {
         $this->v['title'] = " chi tiết người dùng";
         $test = new test1();
-        $objitem  = $test ->loadOne($id);
+        $objitem  = $test ->loadOneNd($id);
         // dd($objitem);
         $this->v['objitem'] = $objitem;
         return view('admin.nguoidung.detail', $this->v);
     }
 
     
-    public function update($id,Request $request){
+    public function updateNd($id,Request $request){
         $method_route_detail = "route_BackEnd_Uesr_detail";
         $method_router_index = "route_BackEnd_Uesr_Index";
         $params = []; 
@@ -87,7 +87,7 @@ class Test1Controller extends Controller
         $params['cols']['id'] = $id;
         $params['cols']['password']  = Hash::make($params['cols']['password']);
         $test = new test1();
-        $res = $test->Saveupdate($params);
+        $res = $test->SaveupdateNd($params);
         if($res == null){
             return redirect()->route($method_route_detail,['id'=>$id]);
         }

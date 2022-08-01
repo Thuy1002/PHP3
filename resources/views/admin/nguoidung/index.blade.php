@@ -174,7 +174,7 @@
                                    @endif
                                 </td>
                                 <td class="text-center"><a class="btn btn-danger" href="">Xóa</a>
-                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}"confirm >Sửa</a></td>
+                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}" >Sửa</a></td>
 
                             </tr>
                         @endforeach

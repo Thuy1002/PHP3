@@ -18,6 +18,11 @@ class sanpham extends Model
         $list = $query->paginate(5);
         return $list;
     }
+    public function listsp_2($params = [])
+    {
+        $query = DB::table($this->table)->select($this->fillable)->where('trang_thai',1 )->orWhere('trang_thai',0)->get();
+        return $query;
+    }
     public function saveNew($params,$src)
     {
         $data = array_merge($params['cols'],[ //array_ có rồi thì cập nhật không có thì thêm 

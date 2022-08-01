@@ -115,12 +115,12 @@
                             <div style="    display: grid;" class="col-md-9 col-sm-8">
                                 <label  for="">
                                     <input type="radio" name="trang_thai" id="input"
-                                        value="@isset($request['trang_thai']) {{ $request['trang_thai'] }} @endisset"
+                                        value="{{ $objitem->trang_thai }}"
                                         checked> đại ca
                                 </label>
                                 <label  for="">
                                     <input type="radio" name="trang_thai" id=""
-                                        value="@isset($request['trang_thai']) {{ $request['trang_thai'] }} @endisset">
+                                         value="{{ $objitem->trang_thai }}">
                                     Đệ
                                 </label>
                             </div>

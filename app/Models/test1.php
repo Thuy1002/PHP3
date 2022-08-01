@@ -34,13 +34,13 @@ class test1 extends Model
         $res = DB::table($this->table)->insertGetId($data);
         return $res;
     }
-    public function loadOne($id,$params = null)
+    public function loadOneNd($id,$params = null)
     {
         $query = DB::table($this->table)->where('id','=', $id);
         $obj = $query->first();
         return $obj;
     }
-    public function Saveupdate($params)
+    public function SaveupdateNd($params)
     {
       if(empty($params['cols']['id'])){
         Session::flash('erro','không xác định được bản ghi cập nhật');

@@ -27,7 +27,7 @@ Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout'])
 //     return view('client.ct_sp');
 // });
 Route::get('/', 'HomeController@showsp');
-Route::get('san-pham/{id}', 'HomeController@detail');
+Route::get('san-pham/{id}', 'CtspController@detailSp');
 Route::get('/store', 'HomeController@shopsp');
 
 Route::middleware(['auth'])->group(function(){
@@ -35,15 +35,15 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/test', 'Test1Controller@index')->name('route_BackEnd_Uesr_Index');
     Route::match(['get','post'],'test1/add','Test1Controller@add')->name('route_BackEnd_Uesr_Add');
-    Route::get('test/detail/{id}', 'Test1Controller@detail')->name('route_BackEnd_Uesr_detail');
-    Route::post('test/update/{id}', 'Test1Controller@update')->name('route_BackEnd_Uesr_update');
+    Route::get('test/detail/{id}', 'Test1Controller@detailNd')->name('route_BackEnd_Uesr_detail');
+    Route::post('test/update/{id}', 'Test1Controller@updateNd')->name('route_BackEnd_Uesr_update');
     // Route::delete('test1/delete/{id}', 'Test1Controller@destroy')->name('route_BackEnd_Uesr_delete');
 
     Route::get('/danhmuc', 'DmController@index')->name('route_BackEnd_Danhmuc_Index');
     Route::match(['get','post'],'danhmuc/add','DmController@add')->name('route_BackEnd_Danhmuc_Add');
     Route::get('/danhmuc/delete/{id}', 'DmController@destroy')->name('route_BackEnd_Danhmuc_del');
-    Route::get('danhmuc/detail/{id}', 'DmController@detail')->name('route_BackEnd_Danhmuc_detail');
-    Route::post('danhmuc/update/{id}', 'DmController@update')->name('route_BackEnd_Danhmuc_update');
+    Route::get('danhmuc/detail/{id}', 'DmController@detailDm')->name('route_BackEnd_Danhmuc_detail');
+    Route::post('danhmuc/update/{id}', 'DmController@updateDm')->name('route_BackEnd_Danhmuc_update');
 
 
 

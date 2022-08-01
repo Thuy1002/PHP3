@@ -58,6 +58,45 @@ class DmController extends Controller
         }
         return view('admin.danhmuc.add', $this->v);
     }
+
+    public function detailDm($id, Request $request)
+    {
+        $this->v['title'] = " Chi tiết danh mục";
+        $test = new danhmuc();
+        $objitem  = $test ->loadOneDm($id);
+        // dd($objitem);
+        $this->v['objitem'] = $objitem;
+        return view('admin.danhmuc.detail', $this->v);
+    }
+
+    public function updateDm($id,Request $request){
+        $method_route_detailDm = "route_BackEnd_Danhmuc_detail";
+        $method_router_indexDm = "route_BackEnd_Danhmuc_update";
+        $params = []; 
+        $params['cols'] = array_map(function($item){
+            if($item == '')
+            $item = null;
+            if(is_string($item))
+            $item = trim($item);
+            return $item;
+        },$request->post());
+        unset($params['cols']['_token']);
+        $params['cols']['id'] = $id;
+        // $params['cols']['password']  = Hash::make($params['cols']['password']);
+        $test = new danhmuc();
+        $res = $test->SaveupdateDm($params);
+        if($res == null){
+            return redirect()->route($method_route_detailDm,['id'=>$id]);
+        }
+        elseif($res == 1){
+            Session::flash('success','cập nhật bản ghi '.$id.'thành công');
+            return redirect()->route($method_router_indexDm,['id'=>$id]);
+        }
+        else{
+            Session::flash('success','lỗi cập nhật bản ghi '.$id);
+            return redirect()->route($method_route_detailDm,['id'=>$id]);
+        }
+    }
     public function destroy($id)
     {
         $method_route_dm = 'route_BackEnd_Danhmuc_Index';
