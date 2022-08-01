@@ -167,10 +167,14 @@
                                 </td>
                                 <td class="text-center">{{$l ->email}}</td>
                                 <td class="text-center">
-                                    nhân viên
+                                    @if (($l->trang_thai) == 1)
+                                    Đại ca
+                                @else
+                                   Đệ
+                                   @endif
                                 </td>
                                 <td class="text-center"><a class="btn btn-danger" href="">Xóa</a>
-                                    <a class="btn btn-primary" href="">Sửa</a></td>
+                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}"confirm >Sửa</a></td>
 
                             </tr>
                         @endforeach

@@ -12,7 +12,7 @@ class test1 extends Model
 {
     use HasFactory;
     protected  $table = 'users';
-    protected $fillable = ['id','name','email'];
+    protected $fillable = ['id','name','email','trang_thai'];
      public function loadlist($params = [])
     {
         $query = DB::table($this->table)
@@ -21,8 +21,7 @@ class test1 extends Model
         return $lists;
     }
     public function loadListWithPager($params= []){// phân trang 
-        $query  = DB::table($this->table)
-        ->select($this->fillable);
+        $query  = DB::table($this->table)->where('trang_thai',1 )->orWhere('trang_thai',0)->select($this->fillable);
         $list =$query->paginate(5);
         return $list;
     }
@@ -58,5 +57,10 @@ class test1 extends Model
       $res = DB::table($this->table)->where('id',$params['cols']['id'])
       ->update($data_update);
       return $res;
+    }
+     public function Xoa($id)
+    {
+       $res = DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]);
+       return $res;
     }
 }

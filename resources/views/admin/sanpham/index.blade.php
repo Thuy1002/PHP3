@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\DB;
+@endphp
 @extends('templates.layoutadmin')
 @section('title', 'san pham')
 @section('css')
@@ -163,6 +166,7 @@
                             </th>
                             <th class="text-center">Số lượng</th>
                             <th class="text-center">Trạng thái</th>
+                            <th class="text-center">Danh mục</th>
                             <th class="text-center">Hành động</th>
                         </tr>
                         @foreach ($list as $l)
@@ -177,13 +181,15 @@
                                 <td class="text-center">{{$l ->mo_ta}}</td>
                                 <td class="text-center">{{$l ->so_luong}}</td>
                                 <td class="text-center">
-                                    @if (($l->trang_thai) === 1)
+                                    @if (($l->trang_thai) == 1)
                                     Còn Hàng
                                 @else
                                    hết hàng
                                    @endif
                                 </td>
-                                <td class="text-center"><a class="btn btn-danger" href="">Xóa</a>
+                                <td class="text-center">{{DB::table('danh_muc')->where('id',$l->id_danhmuc)->first()->ten_danhmuc}}
+                                </td>
+                                <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
                                      <a class="btn btn-primary" href="">Sửa</a></td>
                                
 

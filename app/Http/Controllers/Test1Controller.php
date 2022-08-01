@@ -70,6 +70,8 @@ class Test1Controller extends Controller
         $this->v['objitem'] = $objitem;
         return view('admin.nguoidung.detail', $this->v);
     }
+
+    
     public function update($id,Request $request){
         $method_route_detail = "route_BackEnd_Uesr_detail";
         $method_router_index = "route_BackEnd_Uesr_Index";

@@ -11,10 +11,10 @@ class sanpham extends Model
 {
     use HasFactory;
     protected $table = "san_pham";
-    protected $fillable = ['id','gia','hinh_anh','ten_sp','so_luong','mo_ta','trang_thai',];
+    protected $fillable = ['id','gia','hinh_anh','ten_sp','so_luong','mo_ta','trang_thai','id_danhmuc'];
      public function listsp($params = [])
     {
-        $query = DB::table($this->table)->select($this->fillable);
+        $query = DB::table($this->table)->select($this->fillable)->where('trang_thai',1 )->orWhere('trang_thai',0);
         $list = $query->paginate(5);
         return $list;
     }
@@ -35,6 +35,12 @@ class sanpham extends Model
         $obj = $query->first();
         return $obj;
     }
+    public function Xoa($id)
+    {
+      $res= DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]) ;
+      return $res;
+    }
+   
 
 
 

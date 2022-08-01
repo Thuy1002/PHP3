@@ -17,29 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        
-      for ($i=0; $i < 10; $i++) { 
-        $teacherSeed[$i] = [
-            "ten_giang_vien"=>"Nguyễn Văn A". $i,
-            "ngay_giang_day"=>"2022-02-12",
-            "created_at"=>date("Y-m-d H:i:s"),
-            "updated_at"=>date("Y-m-d H:i:s"),
-
-        ];
-        $studentSeed[$i] = [
-          "ten_sv"=>"Nguyễn Văn A". $i,
-          "ngay_sinh"=>"2008-02-12",
-          "nganh_hoc"=>"Học đếm",
-          "created_at"=>date("Y-m-d H:i:s"),
-          "updated_at"=>date("Y-m-d H:i:s"),
-
-      ];
-      }
-    
       for($i=1;$i<20;$i++){
           $nguoidung[$i]= [
               'name' => "Đặng Thanh Thùy",
               'email' => 'thuy'.$i.'@gmail.com',
+              // 'trang_thai' => 'thuy'.$i.'@gmail.com',
               'password' => Hash::make('123456'),
               "created_at"=>date("y-m-d H:i:s"),
               "updated_at"=>date("y-m-d H:i:s"),

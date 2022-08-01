@@ -78,10 +78,9 @@
                             <form>
                                 <select class="input-select">
                                     <option value="0">Nhãn Hàng</option>
-                                    {{-- <option value="1">Category 01</option>
-                                    <option value="1">Category 02</option> --}}
+                                
                                     @foreach ($dm as $l)
-                                        <option value="1">{{ $l->ten_danhmuc }}</option>
+                                        <option style="color: black" value="1">{{ $l->ten_danhmuc }}</option>
                                     @endforeach
                                 </select>
                                 <input class="input" placeholder="Search here">
@@ -177,7 +176,7 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="http://127.0.0.1:8000/home">Trang Chủ</a></li>
+                    <li class="active"><a href="http://127.0.0.1:8000/">Trang Chủ</a></li>
                     <li><a href="http://127.0.0.1:8000/store">Cửa Hàng</a></li>
                     <li><a href="#">Categories</a></li>
                     <li><a href="#">Laptops</a></li>

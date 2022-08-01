@@ -6,25 +6,7 @@
 
  
  <!-- BREADCRUMB -->
- 
- <div id="breadcrumb" class="section">
-     <!-- container -->
-     <div class="container">
-         <!-- row -->
-         <div class="row">
-             <div class="col-md-12">
-                 <ul class="breadcrumb-tree">
-                     <li><a href="#">Home</a></li>
-                     <li><a href="#">All Categories</a></li>
-                     <li><a href="#">Accessories</a></li>
-                     <li class="active">Headphones (227,490 Results)</li>
-                 </ul>
-             </div>
-         </div>
-         <!-- /row -->
-     </div>
-     <!-- /container -->
- </div>
+{{--   --}}
  <!-- /BREADCRUMB -->
 
  <!-- SECTION -->
@@ -282,7 +264,7 @@
                      <!-- /product -->
 
                      <!-- product -->
-                     <div class="col-md-4 col-xs-6">
+                     {{-- <div class="col-md-4 col-xs-6">
                          <div class="product">
                              <div class="product-img">
                                  <img src="../clientA/img/product02.png" alt="">
@@ -315,7 +297,7 @@
                                      cart</button>
                              </div>
                          </div>
-                     </div>
+                     </div> --}}
                      <!-- /product -->
 
                      <div class="clearfix visible-sm visible-xs"></div>

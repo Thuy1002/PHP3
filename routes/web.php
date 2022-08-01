@@ -26,8 +26,8 @@ Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout'])
 // Route::get('/ct', function () {
 //     return view('client.ct_sp');
 // });
-Route::get('/home', 'HomeController@showsp');
-Route::get('sanpham/{id}', 'HomeController@detail');
+Route::get('/', 'HomeController@showsp');
+Route::get('san-pham/{id}', 'HomeController@detail');
 Route::get('/store', 'HomeController@shopsp');
 
 Route::middleware(['auth'])->group(function(){
@@ -41,8 +41,15 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/danhmuc', 'DmController@index')->name('route_BackEnd_Danhmuc_Index');
     Route::match(['get','post'],'danhmuc/add','DmController@add')->name('route_BackEnd_Danhmuc_Add');
+    Route::get('/danhmuc/delete/{id}', 'DmController@destroy')->name('route_BackEnd_Danhmuc_del');
+    Route::get('danhmuc/detail/{id}', 'DmController@detail')->name('route_BackEnd_Danhmuc_detail');
+    Route::post('danhmuc/update/{id}', 'DmController@update')->name('route_BackEnd_Danhmuc_update');
+
+
 
     Route::get('/sanpham', 'spController@index')->name('route_BackEnd_Sanpham_Index');
     Route::match(['get','post'],'sanpham/add','spController@add')->name('route_BackEnd_Sanpham_Add');
+    Route::get('/sanpham/delete/{id}', 'spController@destroy')->name('route_BackEnd_Sanpham_del');
+    
 });
  

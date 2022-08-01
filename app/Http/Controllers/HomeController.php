@@ -38,6 +38,8 @@ class HomeController extends Controller
     public function detail($id, Request $request)
     {
         // $this->v['title'] = " chi tiết người dùng";
+        $dm = new danhmuc();
+        $this->v['dm'] = $dm->Danhmuc();
         $test = new Home();
         $objitem  = $test->loadOne($id);
         // dd($objitem);

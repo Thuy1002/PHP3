@@ -38,6 +38,7 @@ class spController extends Controller
     public function add(SanphamRequest $request){
         $this->v['_title'] = "them nguoi dung";
         $method_route = 'route_BackEnd_Sanpham_Add';
+        $method_route_index = 'route_BackEnd_Sanpham_Index';
         $dm = new danhmuc();
             $this->v['tieude']= "thêm sản phẩm";
             // dd($dm->Danhmuc());
@@ -66,14 +67,33 @@ class spController extends Controller
                 redirect()->route($method_route);
             }elseif($res> 0 ){
                 Session::flash('success','Thêm sản phẩm thành công');
+                return redirect() ->route($method_route_index);
             }else {
                 Session::flash('arro','Lỗi thêm mới');
-                redirect()->route($method_route);
+                redirect()->route($method_route) ;
             }
             // dd($params['cols']);
         }
         return view('admin.sanpham.add', $this->v);
     }
+    public function destroy($id)
+    {
+        $method_route_sp = 'route_BackEnd_Sanpham_Index';
+        $model = new sanpham();
+        $res = $model->Xoa($id);
 
+        if ($res == null) {
+            # code...
+            return  redirect()->route($method_route_sp);
+        } elseif ($res > 0) {
+            Session::flash('success', 'Xóa sản phẩm thành công');
+
+            return   redirect()->route($method_route_sp);
+        } else {
+            Session::flash('erro', 'Xóa lỗi');
+            redirect()->route($method_route_sp);
+        }
+        return redirect()->route($method_route_sp);
+    }
     
 }

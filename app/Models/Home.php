@@ -14,7 +14,7 @@ class Home extends Model
   
     public function Listsp()
     {
-      $query = DB::table($this->table)->get();
+      $query = DB::table($this->table)->where('trang_thai',1 )->get();
       return $query;
     }
     public function loadOne($id,$params = null)
