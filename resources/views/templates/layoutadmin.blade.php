@@ -35,7 +35,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
     <link rel="stylesheet" href="{{ asset('css/backend.css') }}?b={{ config('app.build_version') }}">
 
 
-   
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,7 +50,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="icon" type="image/png" sizes="16x16" href="/public/img/favicon.png">
     <link rel="stylesheet" href="{{ asset('default/bower_components/select2/dist/css/select2.min.css') }}">
-   
+
     @yield('css')
     <style>
         .select2-container--default .select2-selection--single,
