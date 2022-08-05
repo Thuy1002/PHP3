@@ -76,53 +76,33 @@
         @endif
 
         <!-- Phần nội dung riêng của action  -->
-        <form class="form-horizontal " action="" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{ route('route_BackEnd_Banner_update', ['id' => request()->route('id')]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên người dùng <span
+                            <label for="" class="col-md-3 col-sm-4 control-label">Tên ảnh <span
                                     class="text-danger">(*)</span></label>
-
                             <div class="col-md-9 col-sm-8">
-                                <input type="text" name="name" id="name" class="form-control"
-                                    value="@isset($request['name']) {{ $request['name'] }} @endisset">
+                                <input type="text" name="ten_banner" id="ten_banner" class="form-control"
+                                    value="">
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
+                     
                         <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Email <span
-                                    class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="text" name="email" id="email" class="form-control"
-                                    value="@isset($request['email']) {{ $request['email'] }} @endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span
-                                    class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="password" name="password" id="password" class="form-control"
-                                    value="@isset($request['password']) {{ $request['password'] }} @endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 col-sm-4 control-label">Ảnh CMND/CCCD</label>
+                            <label class="col-md-3 col-sm-4 control-label">Ảnh <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <img id="mat_truoc_preview"
-                                            src="https://dbk.vn/uploads/ckfinder/images/tin-tuc-1/anh-ma-kinh-di-1.jpg"
-                                            alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;"
-                                            class="img-fluid" />
-                                        <input type="file" name="cmt_mat_truoc" accept="image/*"
-                                            class="form-control-file @error('cmt_mat_truoc') is-invalid @enderror"
-                                            id="cmt_truoc">
-                                        <label for="cmt_truoc">Mặt trước</label><br />
+                                             src="{{ $objitem->hinh_anh?''.Storage::url($objitem->hinh_anh):'http://placehold.it/100x100' }}"
+                                             alt="your image"
+                                             style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/>
+                                        <label for="cmt_truoc">Mặt trước</label><br/>
                                     </div>
+                                    <input type="file" name="hinh_anh" class="form-group">
                                 </div>
                             </div>
                         </div>

@@ -32,8 +32,8 @@ class SanphamRequest extends FormRequest
                     case 'add':
                         $rules = [
                             'ten_sp' => "required | unique:san_pham", //unique duy nhất 
-                            'gia' => "required | min 0 ",
-                            'so_luong' => "required | min 0 " ,
+                            'gia' => "required ",
+                            'so_luong' => "required " ,
                             'hinh_anh' => "required | file  ",
                             'id_danhmuc' => "required ",
                         ];
@@ -57,9 +57,9 @@ class SanphamRequest extends FormRequest
             'ten_sp.required'=>"Chưa nhập tên sản phẩm",
             'ten_sp.unique'=>"Tên sẩn phẩm đã tồn tại",
             'gia.required'=>"Chưa nhập giá",
-            'gia.min'=>"Giá phải lớn hơn 0",
+            // 'gia.min'=>"Giá phải lớn hơn 0",
             'so_luong.required'=>"Chưa nhập số lượng",
-            'so_luong.min'=>"Số lượng lớn hơn 0",
+            // 'so_luong.min'=>"Số lượng lớn hơn 0",
             // 'so_luong.min'=>"số lượng lớn hơn 1",
             'hinh_anh.required'=>"chưa có ảnh",
             'hinh_anh.file'=>"phải là file ảnh được tải lên",

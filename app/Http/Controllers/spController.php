@@ -76,6 +76,24 @@ class spController extends Controller
         }
         return view('admin.sanpham.add', $this->v);
     }
+
+    public function detailSp($id, Request $request)
+    {
+        $this->v['title'] = " chi tiết sản phẩm";
+        $dm = new danhmuc();
+        $this->v['dm'] = $dm->Danhmuc();
+        $test = new sanpham();
+        $objitem  = $test ->loadOneSP($id);
+        // dd($objitem);
+        $this->v['objitem_sp'] = $objitem;
+        return view('admin.sanpham.detail', $this->v);
+    }
+    public function updateSp($id,Request $request){
+
+    }
+
+
+
     public function destroy($id)
     {
         $method_route_sp = 'route_BackEnd_Sanpham_Index';
@@ -86,7 +104,7 @@ class spController extends Controller
             # code...
             return  redirect()->route($method_route_sp);
         } elseif ($res > 0) {
-            Session::flash('success', 'Xóa sản phẩm thành công');
+            Session::flash('success', 'Xóa sản phẩm '.$id.'thành công');
 
             return   redirect()->route($method_route_sp);
         } else {

@@ -5,42 +5,41 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class test1 extends Model
+class Banner extends Model
 {
     use HasFactory;
-    protected  $table = 'users';
-    protected $fillable = ['id','name','email','trang_thai','img'];
-     public function loadlist($params = [])
+    protected  $table = 'banner';
+    protected $fillable = ['id', 'ten_banner','hinh_anh'];
+    public function listBanner($params = []) //show theo phân trang
     {
-        $query = DB::table($this->table)
-        ->select($this->fillable);
-        $lists = $query->get();
-        return $lists;
+      $query = DB::table($this->table)->select($this->fillable)->where('trang_thai', 1);
+      $listdm = $query->paginate(5);
+      return $listdm;
     }
-    public function loadListWithPager($params= []){// phân trang 
-        $query  = DB::table($this->table)->where('trang_thai',1 )->orWhere('trang_thai',0)->select($this->fillable);
-        $list =$query->paginate(5);
-        return $list;
-    }
-    public function saveNew($params)
+  
+  
+  
+    public function Banner() //show danh sách
     {
-        $data = array_merge($params['cols'],[ //array_ có rồi thì cập nhật không có thì thêm 
-            'password'=>Hash::make($params['cols']['password']),
-            // 'level'=>1,
-        ]);
+      $query = DB::table($this->table)->where('trang_thai', 1)->get();
+      return $query;
+    }
+  
+    public function saveBanner($params)
+    {
+        $data = array_merge($params['cols']);
         $res = DB::table($this->table)->insertGetId($data);
         return $res;
     }
-    public function loadOneNd($id,$params = null)
+    public function loadOneBanner($id,$params = null)
     {
         $query = DB::table($this->table)->where('id','=', $id);
         $obj = $query->first();
         return $obj;
     }
-    public function SaveupdateNd($params)
+    public function SaveupdateBanner($params)
     {
       if(empty($params['cols']['id'])){
         Session::flash('erro','không xác định được bản ghi cập nhật');
@@ -60,7 +59,8 @@ class test1 extends Model
     }
     public function Xoa($id)
     {
-      $res= DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]) ;
+      $res= DB::table($this->table)->where('id',$id)->update(['trang_thai'=>0]) ;
       return $res;
     }
+  
 }

@@ -1,16 +1,16 @@
 @php
-    use Illuminate\Support\Facades\DB;
+
 @endphp
 @extends('templates.layoutadmin')
-@section('title', 'san pham')
+@section('title', 'Quản lý banner')
 @section('css')
     <style>
         body {
             /*-webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                -o-user-select: none;*/
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        -o-user-select: none;*/
             user-select: none;
         }
 
@@ -86,8 +86,8 @@
                             </button>
                             <a href="{{ url('/user') }}" class="btn btn-default btn-sm "><i class="fa fa-remove"></i>
                                 Clear </a>
-                            <a href="{{route('route_BackEnd_Sanpham_Add')}}" class="btn btn-info btn-sm"><i class="fa fa-user-plus"
-                                    style="color:white;"></i>
+                            <a href="{{ route('route_BackEnd_Banner_Add') }}" class="btn btn-info btn-sm"><i
+                                    class="fa fa-user-plus" style="color:white;"></i>
                                 Add new</a>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                 </div>
             @endif
         </div>
-        @if (count($list) <= 0)
+        @if (count($list_banner) <= 0)
             <p class="alert alert-warning">
                 Không có dữ liệu phù hợp
             </p>
@@ -145,8 +145,8 @@
         <div class="box-body table-responsive no-padding">
             <form action="" method="post">
                 @csrf
-                <span class="pull-right">Tổng số bản ghi tìm thấy: <span
-                        style="font-size: 15px;font-weight: bold;">{{count($list)}}</span></span>
+                <span class="pull-right">Tổng số bản ghi tìm thấy: <span style="font-size: 15px;font-weight: bold;">
+                        {{ count($list_banner) }}</span></span>
                 <div class="clearfix"></div>
                 <div class="double-scroll">
                     <table class="table table-bordered">
@@ -154,48 +154,28 @@
                             <th style="width: 50px" class="text-center">
                                 #ID
                             </th>
-                            <th class="text-center">Tên sản phẩm</th>
-                            <th class="text-center">
-                                Giá
-                            </th>
-                            <th class="text-center">
-                                Hình
-                            </th>
-                            <th class="text-center">
-                                Mô tả 
-                            </th>
-                            <th class="text-center">Số lượng</th>
-                            <th class="text-center">Trạng thái</th>
-                            <th class="text-center">Danh mục</th>
-                            <th class="text-center">Hành động</th>
+                            <th class="text-center">Tên banner</th>
+                            <th class="text-center">Ảnh</th>
+                            <th class="text-center">Hành dộng</th>
+
+
                         </tr>
-                        @foreach ($list as $l)
+                        @foreach ($list_banner as $l)
                             <tr>
                                 {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td> --}}
-                                <td class="text-center">{{$l ->id}}</td>
+                                <td class="text-center">{{ $l->id }}</td>
                                 <td class="text-center"><a style="color:#333333;font-weight: bold;" href=""
-                                        style="white-space:unset;text-align: justify;"> {{$l ->ten_sp}} <i class="fa fa-edit"></i></a>
+                                        style="white-space:unset;text-align: justify;"> {{ $l->ten_banner }} <i
+                                            class="fa fa-edit"></i></a>
                                 </td>
-                                <td class="text-center">{{$l ->gia}}</td>
-                                <td class="text-center"> <img style="    width: 50px;" src="{{asset('storage/images/'.$l->hinh_anh)}}" alt=""></td>
-                                <td class="text-center">{{$l ->mo_ta}}</td>
-                                <td class="text-center">{{$l ->so_luong}}</td>
-                                <td class="text-center">
-                                    @if (($l->trang_thai) == 1)
-                                    Còn Hàng
-                                @else
-                                   hết hàng
-                                
-                                   @endif
+                                <td class="text-center"> <img id="mat_truoc_preview" src="{{ Storage::url($l->hinh_anh) }}"
+                                        style="margin:auto ;max-width: 200px; height:100px; margin-bottom: 10px;"
+                                        class="img-responsive" /></td>
+                                <td class="text-center"><a class="btn btn-danger"
+                                        href="{{ route('route_BackEnd_Banner_del', [$l->id]) }}">Xóa</a>
+                                    <a class="btn btn-primary"
+                                        href="{{ route('route_BackEnd_Banner_detail', [$l->id]) }}">Sửa</a>
                                 </td>
-                              
-                                <td class="text-center">
-                                 {{       DB::table('danh_muc')->where('id','=',$l->id_danhmuc)->first()->ten_danhmuc}}
-                                </td>
-                                <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
-                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Sanpham_detail',[$l->id]) }}" >Sửa</a></td>
-                               
-
                             </tr>
                         @endforeach
 
@@ -205,8 +185,8 @@
         </div>
         <br>
         <div class="text-center">
-            {{$list->appends($extParams)->links()}}
-          
+            {{ $list_banner->appends($extParams)->links() }}
+
         </div>
         <index-cs ref="index_cs"></index-cs>
     </section>

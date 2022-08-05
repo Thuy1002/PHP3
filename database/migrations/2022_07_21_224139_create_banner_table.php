@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('ten_banner');
             $table->string('hinh_anh');
+            $table->integer('trang_thai')->default('1');
             $table->timestamps();
         });
     }

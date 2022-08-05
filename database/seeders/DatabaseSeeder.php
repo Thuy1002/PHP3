@@ -45,12 +45,6 @@ class DatabaseSeeder extends Seeder
             "updated_at"=>date("y-m-d H:i:s"),
            
           ];
-          $banner[$i] = [
-            'ten_banner'=>"Iphone".$i,
-            'hinh_anh'=>"banner1.png",
-            "created_at"=>date("y-m-d H:i:s"),
-            "updated_at"=>date("y-m-d H:i:s"),
-          ];
           $khuyenmai[$i] = [
             'ten_km'=>"Giảm giá mạnh",
             'code_km'=>"abc123",
@@ -89,6 +83,13 @@ class DatabaseSeeder extends Seeder
         "updated_at"=>date("y-m-d H:i:s"),
     ];
       }
+      for($i = 1;$i<4;$i++){
+      $banner[$i] = [
+        'ten_banner'=>"Iphone".$i,
+        'hinh_anh'=>"banner1.png",
+        "created_at"=>date("y-m-d H:i:s"),
+        "updated_at"=>date("y-m-d H:i:s"),
+      ]; }
       for($i = 1;$i<4;$i++){
       $danhmuc[$i] = [
         'ten_danhmuc'=>"Iphone",

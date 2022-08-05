@@ -34,18 +34,19 @@ class sanpham extends Model
         $res = DB::table($this->table)->insertGetId($data);
         return $res;
     }
-    public function loadOne($id,$params = null)
+    public function loadOneSp($id,$params = null)
     {
         $query = DB::table($this->table)->where('id','=', $id);
         $obj = $query->first();
         return $obj;
     }
+
+
     public function Xoa($id)
     {
       $res= DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]) ;
       return $res;
     }
-   
 
 
 

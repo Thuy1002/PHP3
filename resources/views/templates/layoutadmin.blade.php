@@ -227,6 +227,13 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                                 "><i
                                         class="fa fa-circle-o"></i>Sản Phẩm</a></li>
                         </ul>
+                        <ul class="treeview-menu">
+                            <li><a
+                                    href="
+                                {{ route('route_BackEnd_Banner_Index') }}
+                                "><i
+                                        class="fa fa-circle-o"></i>Banner</a></li>
+                        </ul>
                     </li>
                 </ul>
             </section>

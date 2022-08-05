@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Models\test1;
+use App\Models\Banner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class Test1Controller extends Controller
+class BannerContrller extends Controller
 {
     private $v;
     public function __construct()
@@ -18,19 +16,20 @@ class Test1Controller extends Controller
     }
     public function index(Request $request)
     {
-        $this->v['tieude'] = ['nguoi dung'];
-        $object = new test1();
+        $this->v['tieude'] = ['Quản lý banner'];
+        $banner = new Banner();
         $this->v['extParams'] = $request->all();
-        $this->v['list'] = $object->loadListWithPager();
+        $this->v['list_banner'] = $banner->listBanner();
         //dd($users);
         // $this->v['tests'] = $tests;
-        return view('admin.nguoidung.index', $this->v);
+        return view('admin.banner.index', $this->v);
     }
     //phương thức add
-    public function add(UserRequest $request)
+    public function add(Request $request)
     {
         $this->v['_title'] = "them nguoi dung";
-        $method_route = 'route_BackEnd_Uesr_Add';
+        $method_route = 'route_BackEnd_Banner_Add';
+        $method_route_index = 'route_BackEnd_Banner_Index';
         if ($request->isMethod('post')) {
             $params = [];
             $params['cols'] = array_map(
@@ -47,38 +46,39 @@ class Test1Controller extends Controller
             );
             unset($params['cols']['_token']);
             if($request->hasFile('cmt_mat_truoc')&&$request->file('cmt_mat_truoc')->isValid()){
-                $params['cols']['img'] = $this->uploadFile($request->file('cmt_mat_truoc'));
+                $params['cols']['hinh_anh'] = $this->uploadFile($request->file('cmt_mat_truoc'));
             }
 
-            $modelTest = new test1();
-            $res = $modelTest->saveNew($params);
+            $modelTest = new Banner();
+            $res = $modelTest->saveBanner($params);
             if ($res == null) {
                 # code...
                 redirect()->route($method_route);
             } elseif ($res > 0) {
                 Session::flash('success', 'them moi thanh cong nguoi dung');
+                return redirect()->route($method_route_index);
             } else {
                 Session::flash('arro', 'loi them moi');
                 redirect()->route($method_route);
             }
             // dd($params['cols']);
         }
-        return view('admin.nguoidung.add', $this->v);
+        return view('admin.banner.add', $this->v);
     }
-    public function detailNd($id, Request $request)
+    public function detailBaner($id, Request $request)
     {
-        $this->v['title'] = " chi tiết người dùng";
-        $test = new test1();
-        $objitem  = $test ->loadOneNd($id);
+        $this->v['_title'] = " Banner";
+        $test = new Banner();
+        $objitem  = $test ->loadOneBanner($id);
         // dd($objitem);
         $this->v['objitem'] = $objitem;
-        return view('admin.nguoidung.detail', $this->v);
+        return view('admin.banner.detail', $this->v);
     }
 
     
-    public function updateNd($id,Request $request){
-        $method_route_detail = "route_BackEnd_Uesr_detail";
-        $method_router_index = "route_BackEnd_Uesr_Index";
+    public function updatebanner($id,Request $request){
+        $method_route_detail = "route_BackEnd_Banner_detail";
+        $method_router_index = "route_BackEnd_Banner_Index";
         $params = []; 
         $params['cols'] = array_map(function($item){
             if($item == '')
@@ -88,13 +88,14 @@ class Test1Controller extends Controller
             return $item;
         },$request->post());
         unset($params['cols']['_token']);
-        if($request->hasFile('img')&&$request->file('img')->isValid()){
-            $params['cols']['img'] = $this->uploadFile($request->file('img'));
+        if($request->hasFile('hinh_anh')&&$request->file('hinh_anh')->isValid()){
+            $params['cols']['hinh_anh'] = $this->uploadFile($request->file('hinh_anh'));
         }
+
         $params['cols']['id'] = $id;
-        $params['cols']['password']  = Hash::make($params['cols']['password']);
-        $test = new test1();
-        $res = $test->SaveupdateNd($params);
+      
+        $test = new Banner();
+        $res = $test->SaveupdateBanner($params);
         if($res == null){
             return redirect()->route($method_route_detail,['id'=>$id]);
         }
@@ -109,8 +110,8 @@ class Test1Controller extends Controller
     }
     public function destroy($id)
     {
-        $method_router_index = "route_BackEnd_Uesr_Index";
-        $model = new test1();
+        $method_router_index = "route_BackEnd_Banner_Index";
+        $model = new Banner();
         $res = $model->Xoa($id);
 
         if ($res == null) {

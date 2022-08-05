@@ -10,7 +10,7 @@ class ct_sanpham extends Model
 {
     use HasFactory;
     protected $table = 'san_pham';
-    protected $fillable = ['ten_sp','gia','mo_ta','hinh_anh','so_luong'];
+    protected $fillable = ['ten_sp','gia','mo_ta','hinh_anh','so_luong','id_danhmuc'];
     
     public function loadoneSp($id){
         $query = DB::table($this->table)->where('id',$id);

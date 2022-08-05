@@ -24,7 +24,7 @@
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="../clientA/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://getbootstrap.com/">
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="../clientA/css/style.css" />
 
@@ -75,12 +75,14 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form>
+                            <form action="">
                                 <select class="input-select">
                                     <option value="0">Nhãn Hàng</option>
-                                
+
                                     @foreach ($dm as $l)
-                                        <option style="color: black" value="1">{{ $l->ten_danhmuc }}</option>
+                                        <option style="color: black" value="1">
+                                            <a href="{{ route('route_Fe_dmsp', [$l->id]) }}">{{ $l->ten_danhmuc }}</a>
+                                        </option>
                                     @endforeach
                                 </select>
                                 <input class="input" placeholder="Search here">
@@ -178,11 +180,10 @@
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="http://127.0.0.1:8000/">Trang Chủ</a></li>
                     <li><a href="http://127.0.0.1:8000/store">Cửa Hàng</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Cameras</a></li>
-                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Trợ Giúp</a></li>
+                    {{-- <li><a href="#">Cameras</a></li>
+                    <li><a href="#">Accessories</a></li> --}}
                 </ul>
                 <!-- /NAV -->
             </div>
@@ -190,6 +191,18 @@
         </div>
         <!-- /container -->
     </nav>
+    <div class="section">
+        <!-- container -->
+        <div class="">
+            <img class="col-12" style="height: 465px;width:1476px;" src="../clientA/img/banner2.jpg" alt="">
+            <!-- /tab -->
+        </div>
+
+
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+    </div>
     <!-- /NAVIGATION -->
     <div> {{-- conten --}}
         @yield('content')

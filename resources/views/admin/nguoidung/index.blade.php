@@ -155,6 +155,7 @@
                             <th class="text-center">
                                 Email
                             </th>
+                            <th class="text-center">Hình</th>
                             <th class="text-center">Quyền</th>
                             <th class="text-center">Trạng thái</th>
                         </tr>
@@ -166,6 +167,10 @@
                                         style="white-space:unset;text-align: justify;"> {{$l ->name}} <i class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center">{{$l ->email}}</td>
+                                <td class="text-center">  <img id="mat_truoc_preview"
+                                    src="{{Storage::url($l->img)}}"
+                                 
+                                    style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/></td>
                                 <td class="text-center">
                                     @if (($l->trang_thai) == 1)
                                     Đại ca
@@ -173,7 +178,7 @@
                                    Đệ
                                    @endif
                                 </td>
-                                <td class="text-center"><a class="btn btn-danger" href="">Xóa</a>
+                                <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Uesr_del',[$l->id]) }}">Xóa</a>
                                     <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}" >Sửa</a></td>
 
                             </tr>
