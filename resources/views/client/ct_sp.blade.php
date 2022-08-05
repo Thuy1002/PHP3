@@ -14,21 +14,21 @@
                 <div class="col-md-5 col-md-push-2">
                     <div id="product-main-img">
 						<div class="product-preview">
-                            <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                           <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
 
                         <div class="product-preview">
-                                <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
-                        </div>
-
-
-                        <div class="product-preview">
-                                <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
 
 
                         <div class="product-preview">
-                                <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                        </div>
+
+
+                        <div class="product-preview">
+                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
 
                     </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-2  col-md-pull-5">
                     <div id="product-imgs">
                         <div class="product-preview">
-                                <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
 
                         <div class="product-preview">
@@ -47,11 +47,11 @@
                         </div>
 
                         <div class="product-preview">
-                                <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
 
                         <div class="product-preview">
-                            <img src="{{asset('storage/images/'.$objitem->hinh_anh)}}" alt="">
+                           <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
                         </div>
                     </div>
                 </div>

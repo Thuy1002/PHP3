@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class sanpham extends Model
 {
@@ -23,14 +24,9 @@ class sanpham extends Model
         $query = DB::table($this->table)->select($this->fillable)->where('trang_thai',1 )->orWhere('trang_thai',0)->get();
         return $query;
     }
-    public function saveNew($params,$src)
+    public function saveNew($params)
     {
-        $data = array_merge($params['cols'],[ //array_ có rồi thì cập nhật không có thì thêm 
-            'hinh_anh'=>$src,
-            'created_at'=>date('Y-m-d H:i:s'),
-            'updated_at'=>date('Y-m-d H:i:s'),
-            // 'level'=>1,
-        ]);
+        $data = array_merge($params['cols']);
         $res = DB::table($this->table)->insertGetId($data);
         return $res;
     }
@@ -39,6 +35,24 @@ class sanpham extends Model
         $query = DB::table($this->table)->where('id','=', $id);
         $obj = $query->first();
         return $obj;
+    }
+    public function SaveSp($params)
+    {
+      if(empty($params['cols']['id'])){
+        Session::flash('erro','không xác định được bản ghi cập nhật');
+        return null;
+      }
+      $data_update = [];
+      foreach($params['cols'] as $colName =>$val){
+        if($colName == 'id') continue;
+        if(in_array($colName,$this->fillable)){
+            $data_update[$colName] = (strlen($val) == 0)? null : $val;
+
+        }
+      }
+      $res = DB::table($this->table)->where('id',$params['cols']['id'])
+      ->update($data_update);
+      return $res;
     }
 
 

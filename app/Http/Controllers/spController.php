@@ -58,10 +58,13 @@ class spController extends Controller
             $request->post());
             unset($params['cols']['_token']);
             // dd($params['cols']);
-            $src =  $request->file('hinh_anh')->store('public/images');//store lưu chữ các file ảnh
-            $src = str_replace('public/images/', "", $src);
+            if($request->hasFile('cmt_mat_truoc')&&$request->file('cmt_mat_truoc')->isValid()){
+                $params['cols']['hinh_anh'] = $this->uploadFile($request->file('cmt_mat_truoc'));
+            };
+            // $src =  $request->file('hinh_anh')->store('public/images');//store lưu chữ các file ảnh
+            // $src = str_replace('public/images/', "", $src);
             $modelTest = new sanpham();
-            $res = $modelTest->saveNew($params,$src);
+            $res = $modelTest->saveNew($params);
             if ($res == null) {
                 # code...
                 redirect()->route($method_route);
@@ -89,7 +92,36 @@ class spController extends Controller
         return view('admin.sanpham.detail', $this->v);
     }
     public function updateSp($id,Request $request){
+        $method_route_detail = "route_BackEnd_Sanpham_detail";
+        $method_router_index = "route_BackEnd_Sanpham_Index";
+        $params = []; 
+        $params['cols'] = array_map(function($item){
+            if($item == '')
+            $item = null;
+            if(is_string($item))
+            $item = trim($item);
+            return $item;
+        },$request->post());
+        unset($params['cols']['_token']);
+        if($request->hasFile('hinh_anh')&&$request->file('hinh_anh')->isValid()){
+            $params['cols']['hinh_anh'] = $this->uploadFile($request->file('hinh_anh'));
+        }
 
+        $params['cols']['id'] = $id;
+      
+        $test = new sanpham();
+        $res = $test->SaveSp($params);
+        if($res == null){
+            return redirect()->route($method_route_detail,['id'=>$id]);
+        }
+        elseif($res == 1){
+            Session::flash('success','cập nhật bản ghi '.$id.'thành công');
+            return redirect()->route($method_router_index,['id'=>$id]);
+        }
+        else{
+            Session::flash('success','lỗi cập nhật bản ghi '.$id);
+            return redirect()->route($method_route_detail,['id'=>$id]);
+        }
     }
 
 
@@ -114,4 +146,8 @@ class spController extends Controller
         return redirect()->route($method_route_sp);
     }
     
+    public function uploadFile($file){
+        $fileName = time().'_'.$file->getClientOriginalName();  // 
+        return $file->storeAs('anh_cmmd',$fileName,'public');
+    }
 }

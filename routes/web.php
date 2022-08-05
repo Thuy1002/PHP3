@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/sanpham', 'spController@index')->name('route_BackEnd_Sanpham_Index');
     Route::match(['get','post'],'sanpham/add','spController@add')->name('route_BackEnd_Sanpham_Add');
     Route::get('sanpham/detail/{id}', 'spController@detailSp')->name('route_BackEnd_Sanpham_detail');
+    Route::post('sanpham/update/{id}', 'spController@updateSp')->name('route_BackEnd_Sanpham_update');
     Route::get('/sanpham/delete/{id}', 'spController@destroy')->name('route_BackEnd_Sanpham_del');
     
 });

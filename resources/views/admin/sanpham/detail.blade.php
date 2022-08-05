@@ -79,7 +79,7 @@ use Illuminate\Support\Facades\DB;
             </div>
         @endif
 
-        <form class="form-horizontal " action="" method="POST" role="form" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{ route('route_BackEnd_Sanpham_update', ['id' => request()->route('id')]) }}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
             <div style="padding-right: 130px;" class="col-md-9">
                 <div class="form-group">
@@ -91,12 +91,19 @@ use Illuminate\Support\Facades\DB;
 
                 </div>
                 <div class="form-group">
-                    <label for="">Ảnh sản phẩm</label>
-                   <img src="{{ Storage::url($objitem_sp->hinh_anh)}}" alt="">
-                    <input style="    width: 270px;" type="file" name="hinh_anh" id="" class="form-control"
-                        value="{{ Storage::url($objitem_sp->hinh_anh)}}">
-                    <span id="mes_sdt"></span>
-
+                    <label class="col-md-3 col-sm-4 control-label">Ảnh <span class="text-danger">(*)</span></label>
+                    <div class="col-md-9 col-sm-8">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <img id="mat_truoc_preview"
+                                     src="{{ $objitem_sp->hinh_anh?''.Storage::url($objitem_sp->hinh_anh):'http://placehold.it/100x100' }}"
+                                     alt="your image"
+                                     style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/>
+                                <label for="cmt_truoc">Mặt trước</label><br/>
+                            </div>
+                            <input type="file" name="hinh_anh" class="form-group">
+                        </div>
+                    </div>
                 </div>
                 {{-- <div class="form-group">
                     <label class="col-md-3 col-sm-4 control-label">Ảnh sản phẩm<span class="text-danger">(*)</span></label>
@@ -177,5 +184,23 @@ use Illuminate\Support\Facades\DB;
 @section('script')
     <script src="{{ asset('default/plugins/input-mask/jquery.inputmask.js') }}"></script>
     <script src="{{ asset('default/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script>
+        $(function() {
+            function readURL(input, selector) {
+                if (input.files && input.files[0]) {
+                    let reader = new FileReader();
 
+                    reader.onload = function(e) {
+                        $(selector).attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#cmt_truoc").change(function() {
+                readURL(this, '#mat_truoc_preview');
+            });
+
+        });
+    </script>
 @endsection

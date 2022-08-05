@@ -177,7 +177,11 @@
                                         style="white-space:unset;text-align: justify;"> {{$l ->ten_sp}} <i class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center">{{$l ->gia}}</td>
-                                <td class="text-center"> <img style="    width: 50px;" src="{{asset('storage/images/'.$l->hinh_anh)}}" alt=""></td>
+                                <td class="text-center">  <img id="mat_truoc_preview"
+                                    src="{{Storage::url($l->hinh_anh)}}"
+                                 
+                                    style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/></td>
+                                <td class="text-center">
                                 <td class="text-center">{{$l ->mo_ta}}</td>
                                 <td class="text-center">{{$l ->so_luong}}</td>
                                 <td class="text-center">

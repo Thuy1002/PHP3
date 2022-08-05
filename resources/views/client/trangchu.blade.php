@@ -38,7 +38,7 @@
 										<div class="product">
 											<div class="product-img">
 												{{-- <img src="../clientA/img/product01.png" alt=""> --}}
-												<img src="{{asset('storage/images/'.$l->hinh_anh)}}" alt="">
+												<img src="{{Storage::url($l->hinh_anh)}}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
