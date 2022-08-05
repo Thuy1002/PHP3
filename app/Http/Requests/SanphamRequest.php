@@ -34,7 +34,7 @@ class SanphamRequest extends FormRequest
                             'ten_sp' => "required | unique:san_pham", //unique duy nhất 
                             'gia' => "required ",
                             'so_luong' => "required " ,
-                            'hinh_anh' => "required | file  ",
+                            // 'hinh_anh' => "required   ",
                             'id_danhmuc' => "required ",
                         ];
                         break;
@@ -61,8 +61,8 @@ class SanphamRequest extends FormRequest
             'so_luong.required'=>"Chưa nhập số lượng",
             // 'so_luong.min'=>"Số lượng lớn hơn 0",
             // 'so_luong.min'=>"số lượng lớn hơn 1",
-            'hinh_anh.required'=>"chưa có ảnh",
-            'hinh_anh.file'=>"phải là file ảnh được tải lên",
+            // 'hinh_anh.required'=>"chưa có ảnh",
+            // 'hinh_anh.file'=>"phải là file ảnh được tải lên",
             'id_danhmuc.required'=>"Chưa chọn danh mục",
             
         ];

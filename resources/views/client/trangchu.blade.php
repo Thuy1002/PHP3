@@ -167,11 +167,11 @@
 												<img src="../clientA/img/product06.png" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
+													<span class="new">{{$l->trang_thai == 0?'Hết hàng': 'New'}}</span>
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category">Category</p>
+												{{-- <p class="product-category">Category</p> --}}
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
 												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 												<div class="product-rating">

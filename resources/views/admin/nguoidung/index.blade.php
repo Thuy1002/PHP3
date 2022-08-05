@@ -178,7 +178,7 @@
                                    Đệ
                                    @endif
                                 </td>
-                                <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Uesr_del',[$l->id]) }}">Xóa</a>
+                                <td class="text-center"><a onclick="return confirm('Xóa không tùy mày!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Uesr_del',[$l->id]) }}">Xóa</a>
                                     <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}" >Sửa</a></td>
 
                             </tr>

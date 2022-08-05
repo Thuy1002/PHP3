@@ -86,7 +86,7 @@
                                     class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
                                 <input type="text" name="ten_banner" id="ten_banner" class="form-control"
-                                    value="">
+                                    value="{{$objitem->ten_banner}}">
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>

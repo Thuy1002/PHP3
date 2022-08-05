@@ -88,8 +88,8 @@
                   
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 col-sm-4 control-label">Ảnh</label>
-                    <div class="col-md-9 col-sm-8">
+                    <label class="">Ảnh</label>
+                    <div class="">
                         <div class="row">
                             <div class="col-xs-6">
                                 <img id="mat_truoc_preview"

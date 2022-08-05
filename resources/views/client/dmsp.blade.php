@@ -22,10 +22,10 @@
                         <div class="checkbox-filter">
                             @foreach ($dm as $d)
                                 <div class="input-checkbox">
-                                    <input type="checkbox" id="category-1">
-                                    <label for="category-1">
+                                    <input type="checkbox"  id="category-1">
+                                    <label  for="category-1">
                                         <span></span>
-                                        <a href="{{ route('route_Fe_dmsp',[$d->id]) }}">{{ $d->ten_danhmuc }}</a>
+                                        <a style="font-weight:900;"  href="{{ route('route_Fe_dmsp',[$d->id]) }}">{{ $d->ten_danhmuc }}</a>
 
                                         <small>(120)</small>
                                     </label>
@@ -195,7 +195,7 @@
                                     <img src="{{Storage::url($s->hinh_anh)}}" alt="">
                                     <div class="product-label">
                                         <span class="sale">-30%</span>
-                                        <span class="new">NEW</span>
+                                        <span class="new">{{$s->trang_thai == 0?'Hết hàng': 'New'}}</span>
                                         <span class="new"></span>
                                     </div>
                                 </div>

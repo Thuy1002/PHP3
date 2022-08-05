@@ -137,7 +137,7 @@
                 </div>
             @endif
         </div>
-        @if (count($list) <= 0)
+        @if (count($id_dm) <= 0)
             <p class="alert alert-warning">
                 Không có dữ liệu phù hợp
             </p>
@@ -146,7 +146,7 @@
             <form action="" method="post">
                 @csrf
                 <span class="pull-right">Tổng số bản ghi tìm thấy: <span
-                        style="font-size: 15px;font-weight: bold;">{{count($list)}}</span></span>
+                        style="font-size: 15px;font-weight: bold;">{{count($id_dm)}}</span></span>
                 <div class="clearfix"></div>
                 <div class="double-scroll">
                     <table class="table table-bordered">
@@ -166,10 +166,10 @@
                             </th>
                             <th class="text-center">Số lượng</th>
                             <th class="text-center">Trạng thái</th>
-                            <th class="text-center">Danh mục</th>
+                            {{-- <th class="text-center">Danh mục</th> --}}
                             <th class="text-center">Hành động</th>
                         </tr>
-                        @foreach ($list as $l)
+                        @foreach ($id_dm as $l)
                             <tr>
                                 {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td> --}}
                                 <td class="text-center">{{$l ->id}}</td>
@@ -193,10 +193,10 @@
                                    @endif
                                 </td>
                               
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                  {{       DB::table('danh_muc')->where('id','=',$l->id_danhmuc)->first()->ten_danhmuc}}
-                                </td>
-                                <td class="text-center"><a onclick="return confirm('Xóa không tùy mày!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
+                                </td> --}}
+                                <td class="text-center"><a onclick="return confirm('Xóa không tùy mày!')" class="btn btn-danger" href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
                                     <a class="btn btn-primary" href="{{ route('route_BackEnd_Sanpham_detail',[$l->id]) }}" >Sửa</a></td>
                                
 
@@ -209,7 +209,7 @@
         </div>
         <br>
         <div class="text-center">
-            {{$list->appends($extParams)->links()}}
+            {{$id_dm->appends($extParams)->links()}}
           
         </div>
         <index-cs ref="index_cs"></index-cs>

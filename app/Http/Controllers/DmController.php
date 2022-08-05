@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DanhmucRequest;
 use App\Models\danhmuc;
+use App\Models\sanpham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -115,5 +116,15 @@ class DmController extends Controller
             redirect()->route($method_route_dm);
         }
         return redirect()->route($method_route_dm);
+    }
+
+    public function product_dm($id,Request $request)
+    {
+        $dm = new danhmuc();
+        $this->v['dm'] = $dm->Danhmuc();
+       $sp = new sanpham();
+       $this->v['extParams'] = $request->all();
+       $this->v['id_dm'] = $sp->loadwithDm($id);
+        return view('admin.danhmuc.dmsp',$this->v);
     }
 }

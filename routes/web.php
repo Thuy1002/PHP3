@@ -30,7 +30,7 @@ Route::get('/', 'HomeController@showsp');
 Route::get('san-pham/{id}', 'CtspController@detailSp')->name('route_Fe_Ctsp');
 Route::get('/store', 'HomeController@shopsp');
 Route::get('danh-muc/{id}', 'HomeController@product_dm')->name('route_Fe_dmsp');
-
+Route::get('/check-out', 'CheckoutController@index');
 Route::middleware(['auth'])->group(function(){
    
 
@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/danhmuc', 'DmController@index')->name('route_BackEnd_Danhmuc_Index');
     Route::match(['get','post'],'danhmuc/add','DmController@add')->name('route_BackEnd_Danhmuc_Add');
     Route::get('/danhmuc/delete/{id}', 'DmController@destroy')->name('route_BackEnd_Danhmuc_del');
+    Route::get('danhmuc/sanpham/{id}', 'DmController@product_dm')->name('route_BackEnd_Danhmuc_dmsp');
     Route::get('danhmuc/detail/{id}', 'DmController@detailDm')->name('route_BackEnd_Danhmuc_detail');
     Route::post('danhmuc/update/{id}', 'DmController@updateDm')->name('route_BackEnd_Danhmuc_update');
 

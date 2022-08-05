@@ -54,7 +54,11 @@ class sanpham extends Model
       ->update($data_update);
       return $res;
     }
-
+    public function loadwithDm($id){
+      $res = DB::table($this->table)->where('id_danhmuc',$id)->where('trang_thai','!=',2);
+      $list = $res->paginate(6);
+      return $list;
+    }
 
     public function Xoa($id)
     {

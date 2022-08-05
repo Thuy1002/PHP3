@@ -219,26 +219,25 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">About Us</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut.</p>
+                            <h3 class="footer-title">Về chúng tôi</h3>
+                            <p>Là một công ty lớn xuất hiện đầu tiên tại Việt Nam. Với quy mô lớn được các khách hàng tin dùng và hưởng úng mỗi khi đưa ra sản phẩm mới</p>
                             <ul class="footer-links">
-                                <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                                <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                                <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i>66 Nguyễn Hoàng, Mai Dịch, Cầu Giấy, Hà Nội</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i>0987888888</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i>thuydeptrai@email.com</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Categories</h3>
+                            <h3 class="footer-title">Danh Mục</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Hot deals</a></li>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Đang nổi</a></li>
+                                <li><a href="#">Giảm Giá Mạnh</a></li>
+                                <li><a href="#">Vivo</a></li>
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Samsung</a></li>
                             </ul>
                         </div>
                     </div>
@@ -247,23 +246,23 @@
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Information</h3>
+                            <h3 class="footer-title">Thông tin về chúng tôi</h3>
                             <ul class="footer-links">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Orders and Returns</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Chuyên gia lừa đảo, chuyên lừa lấy lòng khách hàng bằng nhiều hình thức khác nhau</a></li>
+                                <li><a href="#">Tạo các sự kiện lớn như mua 2 tính tiền 2</a></li>
+                                <li><a href="#">Giá cả trên trời</a></li>
+                                <li><a href="#">Trả góp lãi suất 0%</a></li>
+                                <li><a href="#">Không có bảo hành</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Service</h3>
+                            <h3 class="footer-title">Khách hàng và chúng tôi</h3>
                             <ul class="footer-links">
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">View Cart</a></li>
+                                <li><a href="#">Cọc lên là đánh</a></li>
+                                <li><a href="#">Vào là phải mua</a></li>
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Track My Order</a></li>
                                 <li><a href="#">Help</a></li>
