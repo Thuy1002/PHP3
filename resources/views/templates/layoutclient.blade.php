@@ -178,10 +178,10 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="http://127.0.0.1:8000/">Trang Chủ</a></li>
-                    <li><a href="http://127.0.0.1:8000/store">Cửa Hàng</a></li>
-                    <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Trợ Giúp</a></li>
+                    <li class="active"><a  style="font-weight:600;"  href="http://127.0.0.1:8000/">Trang Chủ</a></li>
+                    <li><a style="font-weight:600;" href="http://127.0.0.1:8000/store">Cửa Hàng</a></li>
+                    <li><a  style="font-weight:600;"  href="#">Giới Thiệu</a></li>
+                    <li><a  style="font-weight:600;"  href="#">Trợ Giúp</a></li>
                     {{-- <li><a href="#">Cameras</a></li>
                     <li><a href="#">Accessories</a></li> --}}
                 </ul>

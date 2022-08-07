@@ -202,7 +202,7 @@
                                 <div class="product-body">
                                     {{-- <p class="product-category">{{DB::table('danh_muc')->where('id',$s->id_danhmuc)->first()->ten_danhmuc}}</p> --}}
                                     <h3 class="product-name"><a href="#">{{$s->ten_sp}}</a></h3>
-                                    <h4 class="product-price">{{$s->gia}} <del class="product-old-price">$990.00</del></h4>
+                                    <h4 class="product-price">${{$s->gia}} <del class="product-old-price">$990.00</del></h4>
                                     <div class="product-rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>

@@ -72,7 +72,7 @@
                             <a class="review-link" href="#">10 Review(s) | Add your review</a>
                         </div>
                         <div>
-                            <h3 class="product-price">{{$objitem->gia}}<del class="product-old-price">$990.00</del></h3>
+                            <h3 class="product-price">${{$objitem->gia}}<del class="product-old-price">$990.00</del></h3>
                             <span class="product-available">In Stock</span>
                         </div>
                         <p>{{$objitem->mo_ta}}</p>
