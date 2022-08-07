@@ -91,7 +91,7 @@ class spController extends Controller
         $this->v['objitem_sp'] = $objitem;
         return view('admin.sanpham.detail', $this->v);
     }
-    public function updateSp($id,Request $request){
+    public function updateSp($id,SanphamRequest $request){
         $method_route_detail = "route_BackEnd_Sanpham_detail";
         $method_router_index = "route_BackEnd_Sanpham_Index";
         $params = []; 

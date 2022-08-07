@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Models\test1;
+use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class Test1Controller extends Controller
+class UsersController extends Controller
 {
     private $v;
     public function __construct()
@@ -19,7 +19,7 @@ class Test1Controller extends Controller
     public function index(Request $request)
     {
         $this->v['tieude'] = ['nguoi dung'];
-        $object = new test1();
+        $object = new users();
         $this->v['extParams'] = $request->all();
         $this->v['list'] = $object->loadListWithPager();
         //dd($users);
@@ -50,7 +50,7 @@ class Test1Controller extends Controller
                 $params['cols']['img'] = $this->uploadFile($request->file('cmt_mat_truoc'));
             }
 
-            $modelTest = new test1();
+            $modelTest = new users();
             $res = $modelTest->saveNew($params);
             if ($res == null) {
                 # code...
@@ -68,7 +68,7 @@ class Test1Controller extends Controller
     public function detailNd($id, Request $request)
     {
         $this->v['title'] = " chi tiết người dùng";
-        $test = new test1();
+        $test = new users();
         $objitem  = $test ->loadOneNd($id);
         // dd($objitem);
         $this->v['objitem'] = $objitem;
@@ -76,7 +76,7 @@ class Test1Controller extends Controller
     }
 
     
-    public function updateNd($id,Request $request){
+    public function updateNd($id,UserRequest $request){
         $method_route_detail = "route_BackEnd_Uesr_detail";
         $method_router_index = "route_BackEnd_Uesr_Index";
         $params = []; 
@@ -93,7 +93,7 @@ class Test1Controller extends Controller
         }
         $params['cols']['id'] = $id;
         $params['cols']['password']  = Hash::make($params['cols']['password']);
-        $test = new test1();
+        $test = new users();
         $res = $test->SaveupdateNd($params);
         if($res == null){
             return redirect()->route($method_route_detail,['id'=>$id]);
@@ -110,7 +110,7 @@ class Test1Controller extends Controller
     public function destroy($id)
     {
         $method_router_index = "route_BackEnd_Uesr_Index";
-        $model = new test1();
+        $model = new users();
         $res = $model->Xoa($id);
 
         if ($res == null) {

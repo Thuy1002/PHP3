@@ -6,7 +6,7 @@ use App\Mail\OrderShipped;
 use App\Models\danhmuc;
 use App\Models\Home;
 use App\Models\sanpham;
-use App\Models\test1;
+use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function showsp()
     {
         // Mail::to("thuy1002dangthanh@gmail.com")->send(new OrderShipped(['ma'=>'1232311']));
-        $ct_sp = new test1();
+        $ct_sp = new users();
 
         $dm = new danhmuc();
         $this->v['dm'] = $dm->Danhmuc();

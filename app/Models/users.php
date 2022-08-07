@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class test1 extends Model
+class users extends Model
 {
     use HasFactory;
     protected  $table = 'users';

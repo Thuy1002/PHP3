@@ -36,6 +36,13 @@ class UserRequest extends FormRequest
                             'password' => "required ",
                         ];
                         break;
+                        case 'updateNd':
+                            $rules = [
+                                'email' => "required | unique:users", //unique duy nhất 
+                                'name' => "required ",
+                                'password' => "required ",
+                            ];
+                            break;
                     default:
                         # code...
                         break;

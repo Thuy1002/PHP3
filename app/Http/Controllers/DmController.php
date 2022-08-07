@@ -70,7 +70,7 @@ class DmController extends Controller
         return view('admin.danhmuc.detail', $this->v);
     }
 
-    public function updateDm($id,Request $request){
+    public function updateDm($id,DanhmucRequest $request){
         $method_route_detailDm = "route_BackEnd_Danhmuc_detail";
         $method_router_indexDm = "route_BackEnd_Danhmuc_update";
         $params = []; 

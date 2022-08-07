@@ -1,3 +1,7 @@
+@php
+$objUser = \Illuminate\Support\Facades\Auth::user();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,12 +49,32 @@
             <div class="container">
                 <ul class="header-links pull-left">
                     <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                    <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> {{ $objUser->email }}</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> 66 Nguyễn Hoàng - Mai Dịch - Cầu Giấy - Hà
+                            Nội </a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                    <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <li><a href="#"><i class="fa fa-dollar"></i> 7 Million</a></li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            
+                            <i class="fa fa-user-o"></i><span class="hidden-xs"> {{ $objUser->name }} </span>
+                        </a>
+                        <ul style="    background: #ffff;
+                        text-align: center;
+                    " class="dropdown-menu">
+                            <li>
+                               <p  style="padding: 10px;font-weight:600;">
+                                <i class="fa fa-user"></i>{{ $objUser->email }}<br>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-right">
+                                    <a style="font-weight:600;"  href="{{ route('logout') }}" class="  btn btn-success btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -178,10 +202,10 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a  style="font-weight:600;"  href="http://127.0.0.1:8000/">Trang Chủ</a></li>
+                    <li class="active"><a style="font-weight:600;" href="http://127.0.0.1:8000/">Trang Chủ</a></li>
                     <li><a style="font-weight:600;" href="http://127.0.0.1:8000/store">Cửa Hàng</a></li>
-                    <li><a  style="font-weight:600;"  href="#">Giới Thiệu</a></li>
-                    <li><a  style="font-weight:600;"  href="#">Trợ Giúp</a></li>
+                    <li><a style="font-weight:600;" href="#">Giới Thiệu</a></li>
+                    <li><a style="font-weight:600;" href="#">Trợ Giúp</a></li>
                     {{-- <li><a href="#">Cameras</a></li>
                     <li><a href="#">Accessories</a></li> --}}
                 </ul>
@@ -220,9 +244,11 @@
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
                             <h3 class="footer-title">Về chúng tôi</h3>
-                            <p>Là một công ty lớn xuất hiện đầu tiên tại Việt Nam. Với quy mô lớn được các khách hàng tin dùng và hưởng úng mỗi khi đưa ra sản phẩm mới</p>
+                            <p>Là một công ty lớn xuất hiện đầu tiên tại Việt Nam. Với quy mô lớn được các khách hàng
+                                tin dùng và hưởng úng mỗi khi đưa ra sản phẩm mới</p>
                             <ul class="footer-links">
-                                <li><a href="#"><i class="fa fa-map-marker"></i>66 Nguyễn Hoàng, Mai Dịch, Cầu Giấy, Hà Nội</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i>66 Nguyễn Hoàng, Mai Dịch, Cầu
+                                        Giấy, Hà Nội</a></li>
                                 <li><a href="#"><i class="fa fa-phone"></i>0987888888</a></li>
                                 <li><a href="#"><i class="fa fa-envelope-o"></i>thuydeptrai@email.com</a></li>
                             </ul>
@@ -248,7 +274,8 @@
                         <div class="footer">
                             <h3 class="footer-title">Thông tin về chúng tôi</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Chuyên gia lừa đảo, chuyên lừa lấy lòng khách hàng bằng nhiều hình thức khác nhau</a></li>
+                                <li><a href="#">Chuyên gia lừa đảo, chuyên lừa lấy lòng khách hàng bằng nhiều
+                                        hình thức khác nhau</a></li>
                                 <li><a href="#">Tạo các sự kiện lớn như mua 2 tính tiền 2</a></li>
                                 <li><a href="#">Giá cả trên trời</a></li>
                                 <li><a href="#">Trả góp lãi suất 0%</a></li>

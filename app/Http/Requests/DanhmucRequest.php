@@ -35,6 +35,12 @@ class DanhmucRequest extends FormRequest
                            
                         ];
                         break;
+                        case 'updateDm':
+                            $rules = [
+                                'ten_danhmuc' => "required | unique:danh_muc", //unique duy nhất 
+                               
+                            ];
+                            break;
                     default:
                         # code...
                         break;

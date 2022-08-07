@@ -171,7 +171,7 @@
                                 <td class="text-center"> <img id="mat_truoc_preview" src="{{ Storage::url($l->hinh_anh) }}"
                                         style="margin:auto ;max-width: 200px; height:100px; margin-bottom: 10px;"
                                         class="img-responsive" /></td>
-                                <td class="text-center"><a onclick="return confirm('Xóa không tùy mày!')" class="btn btn-danger" 
+                                <td class="text-center"><a onclick="return confirm('Hãy cẩn thận với xuy nghĩ của bạn !!')" class="btn btn-danger" 
                                         href="{{ route('route_BackEnd_Banner_del', [$l->id]) }}">Xóa</a>
                                     <a class="btn btn-primary"
                                         href="{{ route('route_BackEnd_Banner_detail', [$l->id]) }}">Sửa</a>

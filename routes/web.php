@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/test', 'Test1Controller@index'); 
+// Route::get('/test', 'usersController@index'); 
 //Route::get('/abc', 'AbcController@FunctionName'); 
 Route::get('/login', ['as'=>'login','uses'=>'Auth\LoginController@getLogin']); 
 Route::post('/login', ['as'=>'login','uses'=>'Auth\LoginController@postLogin']); 
@@ -26,19 +26,22 @@ Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout'])
 // Route::get('/ct', function () {
 //     return view('client.ct_sp');
 // });
-Route::get('/', 'HomeController@showsp');
-Route::get('san-pham/{id}', 'CtspController@detailSp')->name('route_Fe_Ctsp');
-Route::get('/store', 'HomeController@shopsp');
-Route::get('danh-muc/{id}', 'HomeController@product_dm')->name('route_Fe_dmsp');
-Route::get('/check-out', 'CheckoutController@index');
-Route::middleware(['auth'])->group(function(){
-   
 
-    Route::get('/test', 'Test1Controller@index')->name('route_BackEnd_Uesr_Index');
-    Route::match(['get','post'],'test1/add','Test1Controller@add')->name('route_BackEnd_Uesr_Add');
-    Route::get('test/detail/{id}', 'Test1Controller@detailNd')->name('route_BackEnd_Uesr_detail');
-    Route::post('test/update/{id}', 'Test1Controller@updateNd')->name('route_BackEnd_Uesr_update');
-    Route::get('/test/delete/{id}', 'Test1Controller@destroy')->name('route_BackEnd_Uesr_del');
+Route::middleware(['auth'])->group(function(){
+    // route client
+    Route::get('/', 'HomeController@showsp');
+    Route::get('san-pham/{id}', 'CtspController@detailSp')->name('route_Fe_Ctsp');
+    Route::get('/store', 'HomeController@shopsp');
+    Route::get('danh-muc/{id}', 'HomeController@product_dm')->name('route_Fe_dmsp');
+    Route::get('/check-out', 'CheckoutController@index');
+
+
+    //route Admin 
+    Route::get('/nguoidung', 'UsersController@index')->name('route_BackEnd_Uesr_Index');
+    Route::match(['get','post'],'users/add','UsersController@add')->name('route_BackEnd_Uesr_Add');
+    Route::get('nguoidung/detail/{id}', 'UsersController@detailNd')->name('route_BackEnd_Uesr_detail');
+    Route::post('nguoidung/update/{id}', 'UsersController@updateNd')->name('route_BackEnd_Uesr_update');
+    Route::get('/nguoidung/delete/{id}', 'UsersController@destroy')->name('route_BackEnd_Uesr_del');
 
     Route::get('/danhmuc', 'DmController@index')->name('route_BackEnd_Danhmuc_Index');
     Route::match(['get','post'],'danhmuc/add','DmController@add')->name('route_BackEnd_Danhmuc_Add');

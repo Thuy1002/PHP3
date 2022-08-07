@@ -196,7 +196,7 @@
                                 <td class="text-center">
                                  {{       DB::table('danh_muc')->where('id','=',$l->id_danhmuc)->first()->ten_danhmuc}}
                                 </td>
-                                <td class="text-center"><a onclick="return confirm('Xóa không tùy mày!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
+                                <td class="text-center"><a onclick="return confirm('Hãy cẩn thận với xuy nghĩ của bạn !!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Sanpham_del',[$l->id]) }}">Xóa</a>
                                     <a class="btn btn-primary" href="{{ route('route_BackEnd_Sanpham_detail',[$l->id]) }}" >Sửa</a></td>
                                
 

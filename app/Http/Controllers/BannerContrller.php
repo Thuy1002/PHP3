@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,9 +26,9 @@ class BannerContrller extends Controller
         return view('admin.banner.index', $this->v);
     }
     //phương thức add
-    public function add(Request $request)
+    public function add(BannerRequest $request)
     {
-        $this->v['_title'] = "them nguoi dung";
+        $this->v['_title'] = "thêm mới banner";
         $method_route = 'route_BackEnd_Banner_Add';
         $method_route_index = 'route_BackEnd_Banner_Index';
         if ($request->isMethod('post')) {
@@ -55,7 +56,7 @@ class BannerContrller extends Controller
                 # code...
                 redirect()->route($method_route);
             } elseif ($res > 0) {
-                Session::flash('success', 'them moi thanh cong nguoi dung');
+                Session::flash('success', 'them moi thanh cong banner');
                 return redirect()->route($method_route_index);
             } else {
                 Session::flash('arro', 'loi them moi');
@@ -76,7 +77,7 @@ class BannerContrller extends Controller
     }
 
     
-    public function updatebanner($id,Request $request){
+    public function updatebanner($id,BannerRequest $request){
         $method_route_detail = "route_BackEnd_Banner_detail";
         $method_router_index = "route_BackEnd_Banner_Index";
         $params = []; 

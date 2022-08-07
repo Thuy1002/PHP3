@@ -38,8 +38,11 @@ class LoginController extends Controller
             $password = $request->input('password');
            //Auth::attempt(): Đây là phương thức check input data có hợp lệ không,
            // nếu hợp lệ sẽ trả về true và ngược lại. 
-            if (Auth::attempt(['email'=>$email,'password'=>$password])) { 
+            if (Auth::attempt(['email'=>$email,'password'=>$password,'trang_thai'=>1])) { 
                 return redirect('test');
+            }
+            if (Auth::attempt(['email'=>$email,'password'=>$password,'trang_thai'=>0])) { 
+                return redirect('/');
             }else {
                Session::flash('error','Email hoặc mật khẩu không đúng');
                return redirect('login')->withErrors($validator)->withInput();

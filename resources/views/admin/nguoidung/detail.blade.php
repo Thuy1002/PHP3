@@ -110,7 +110,7 @@
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-md-3 col-sm-4 control-label">Ảnh CMND/CCCD <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
                                 <div class="row">
@@ -124,7 +124,7 @@
                                     <input type="file" name="img" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class ="form-group">
                             <label  class="col-md-3 col-sm-4 control-label" for="">Trạng thái</label>
