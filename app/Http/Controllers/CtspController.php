@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\ct_sanpham;
 use App\Models\danhmuc;
 use App\Models\sanpham;
@@ -18,9 +19,13 @@ class CtspController extends Controller
     {
         $this->v['title'] = " chi tiết người dùng";
         $dm = new danhmuc();
+      
+        
         $sp = new sanpham();
         $this->v['sp']= $sp->listsp_2();
         $this->v['dm'] = $dm->Danhmuc();
+        $banner  = new Banner();
+        $this->v['banner'] = $banner->LBanner();
         $ctsp = new ct_sanpham();
         $objitem  = $ctsp ->loadoneSp($id);
         // dd($objitem);

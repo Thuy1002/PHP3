@@ -21,7 +21,7 @@ class Banner extends Model
   
   
   
-    public function Banner() //show danh sách
+    public function LBanner() //show danh sách
     {
       $query = DB::table($this->table)->where('trang_thai', 1)->get();
       return $query;

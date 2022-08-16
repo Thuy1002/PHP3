@@ -40,6 +40,97 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
   <![endif]-->
 
 </head>
+<style>
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {}
+
+    /* Caption text */
+    .text {
+
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+
+        border-radius: 50%;
+        display: inline-block;
+        /* transition: background-color 0.6s ease; */
+    }
+
+    .active,
+    .dot:hover {}
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 10s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+</style>
 
 <body>
     <!-- HEADER -->
@@ -57,20 +148,22 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                     <li><a href="#"><i class="fa fa-dollar"></i> 7 Million</a></li>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            
+
                             <i class="fa fa-user-o"></i><span class="hidden-xs"> {{ $objUser->name }} </span>
                         </a>
                         <ul style="    background: #ffff;
                         text-align: center;
-                    " class="dropdown-menu">
+                    "
+                            class="dropdown-menu">
                             <li>
-                               <p  style="padding: 10px;font-weight:600;">
-                                <i class="fa fa-user"></i>{{ $objUser->email }}<br>
+                                <p style="padding: 10px;font-weight:600;">
+                                    <i class="fa fa-user"></i>{{ $objUser->email }}<br>
                                 </p>
                             </li>
                             <li class="user-footer">
                                 <div class="pull-right">
-                                    <a style="font-weight:600;"  href="{{ route('logout') }}" class="  btn btn-success btn-flat">Sign out</a>
+                                    <a style="font-weight:600;" href="{{ route('logout') }}"
+                                        class="  btn btn-success btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -99,17 +192,17 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="">
+                            <form action="{{route('route_tim_kiem')}}" method="GET">
                                 <select class="input-select">
                                     <option value="0">Nhãn Hàng</option>
 
-                                    @foreach ($dm as $l)
+                                    {{-- @foreach ($dm as $l)
                                         <option style="color: black" value="1">
                                             <a href="{{ route('route_Fe_dmsp', [$l->id]) }}">{{ $l->ten_danhmuc }}</a>
                                         </option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
-                                <input class="input" placeholder="Search here">
+                                <input  class="input" type="text" name="key" placeholder="Search here">
                                 <button class="search-btn">Search</button>
                             </form>
                         </div>
@@ -215,19 +308,36 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
         </div>
         <!-- /container -->
     </nav>
-    <div class="section">
-        <!-- container -->
-        <div class="">
-            <img class="col-12" style="height: 465px;width:1476px;" src="../clientA/img/banner2.jpg" alt="">
-            <!-- /tab -->
+ <div class="section">
+    
+        <div class="slideshow-container">
+
+         
+            @foreach ($banner as $b)
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="{{ Storage::url($b->hinh_anh) }}" style="height: 465px;width:1476px;">
+                    <div class="text">{{$b->ten_banner }}</div>
+                </div>
+            @endforeach 
+          
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+       {{-- The dots/circles  --}}
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
 
 
-        <!-- /row -->
     </div>
-    <!-- /container -->
+ 
     </div>
-    <!-- /NAVIGATION -->
+   
     <div> {{-- conten --}}
         @yield('content')
 
@@ -344,7 +454,40 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
     <script src="../clientA/js/nouislider.min.js"></script>
     <script src="../clientA/js/jquery.zoom.min.js"></script>
     <script src="../clientA/js/main.js"></script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
 </body>
 
 </html>

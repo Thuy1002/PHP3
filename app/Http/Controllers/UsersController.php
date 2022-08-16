@@ -88,9 +88,9 @@ class UsersController extends Controller
             return $item;
         },$request->post());
         unset($params['cols']['_token']);
-        if($request->hasFile('img')&&$request->file('img')->isValid()){
-            $params['cols']['img'] = $this->uploadFile($request->file('img'));
-        }
+        // if($request->hasFile('img')&&$request->file('img')->isValid()){
+        //     $params['cols']['img'] = $this->uploadFile($request->file('img'));
+        // }
         $params['cols']['id'] = $id;
         $params['cols']['password']  = Hash::make($params['cols']['password']);
         $test = new users();
@@ -127,8 +127,8 @@ class UsersController extends Controller
         return redirect()->route($method_router_index);
     }
 
-    public function uploadFile($file){
-        $fileName = time().'_'.$file->getClientOriginalName();  // 
-        return $file->storeAs('anh_cmmd',$fileName,'public');
-    }
+    // public function uploadFile($file){
+    //     $fileName = time().'_'.$file->getClientOriginalName();  // 
+    //     return $file->storeAs('anh_cmmd',$fileName,'public');
+    // }
 }

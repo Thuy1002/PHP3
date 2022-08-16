@@ -12,7 +12,7 @@ class users extends Model
 {
     use HasFactory;
     protected  $table = 'users';
-    protected $fillable = ['id','name','email','trang_thai','img'];
+    protected $fillable = ['id','name','email','trang_thai'];
      public function loadlist($params = [])
     {
         $query = DB::table($this->table)

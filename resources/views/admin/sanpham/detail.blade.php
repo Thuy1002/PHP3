@@ -90,18 +90,20 @@ use Illuminate\Support\Facades\DB;
                     <span id="mes_sdt"></span>
 
                 </div>
+            
                 <div class="form-group">
-                    <label class="col-md-3 col-sm-4 control-label">Ảnh <span class="text-danger">(*)</span></label>
-                    <div class="col-md-9 col-sm-8">
+                    <label class="">Ảnh</label>
+                    <div class="">
                         <div class="row">
                             <div class="col-xs-6">
                                 <img id="mat_truoc_preview"
-                                     src="{{ $objitem_sp->hinh_anh?''.Storage::url($objitem_sp->hinh_anh):'http://placehold.it/100x100' }}"
-                                     alt="your image"
-                                     style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/>
-                                <label for="cmt_truoc">Mặt trước</label><br/>
+                                src="{{ $objitem_sp->hinh_anh?''.Storage::url($objitem_sp->hinh_anh):'http://placehold.it/100x100' }}"
+                                    alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;"
+                                    class="img-fluid" />
+                                <label for="cmt_truoc">Mặt trước</label><br />
+                                <input   class="form-control-file @error('cmt_mat_truoc') is-invalid @enderror"
+                                id="cmt_truoc" type="file" name="hinh_anh" class="form-group">
                             </div>
-                            <input type="file" name="hinh_anh" class="form-group">
                         </div>
                     </div>
                 </div>

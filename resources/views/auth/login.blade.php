@@ -56,7 +56,7 @@
         }
         .login-logo{
             /*margin-top: 50px;*/
-            background: #f9b638;
+            background: #2CADAD;
             margin-bottom: 0;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -66,11 +66,11 @@
             padding-top:50px;
         }
         .btn-login{
-            background: #f9b638;
+            background: #2CADAD;
             color: #fff;
         }
         .btn-login:hover{
-            background: #f1ba54;
+            background: #2CADAD;
             color:#fff;
         }
     </style>
@@ -105,6 +105,9 @@
             <!-- /.col -->
                 <div class="col-xs-12">
                     <button type="submit" class="btn btn-block btn-flat text-center btn-login">Sign In</button>
+                </div>
+                <div class="text-center">
+                    Bạn chưa có tài khoản? <a style="font-weight: 900;" href="/signup" id="signup_id">Đăng Ký</a>
                 </div>
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <!-- /.col -->

@@ -22,7 +22,8 @@ Route::get('/', function () {
 Route::get('/login', ['as'=>'login','uses'=>'Auth\LoginController@getLogin']); 
 Route::post('/login', ['as'=>'login','uses'=>'Auth\LoginController@postLogin']); 
 Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout']); 
-
+Route::get('/signup',['as'=>'signup','uses'=>'Auth\LoginController@getSignup']);
+Route::post('/signup',['as'=>'signup','uses'=>'Auth\LoginController@postSignup']);
 // Route::get('/ct', function () {
 //     return view('client.ct_sp');
 // });
@@ -33,7 +34,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('san-pham/{id}', 'CtspController@detailSp')->name('route_Fe_Ctsp');
     Route::get('/store', 'HomeController@shopsp');
     Route::get('danh-muc/{id}', 'HomeController@product_dm')->name('route_Fe_dmsp');
-    Route::get('/check-out', 'CheckoutController@index');
+    // Route::get('/check-out', 'CheckoutController@index');
+    Route::get('/search', 'HomeController@search')->name('route_tim_kiem');
 
 
     //route Admin 

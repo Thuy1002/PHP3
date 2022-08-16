@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 class sanpham extends Model
@@ -65,7 +66,13 @@ class sanpham extends Model
       $res= DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]) ;
       return $res;
     }
-
+    
+ public function FunctionName(Request $request)
+{
+  # code...
+  $rss = DB::table($this->table)->where('ten_sp','like','%'.$request->key.'%') ->get();
+  return $rss;
+}
 
 
 }

@@ -29,4 +29,5 @@ class Home extends Model
       $list = $res->paginate(6);
       return $list;
     }
+  
 }

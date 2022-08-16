@@ -174,9 +174,9 @@
                                     style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/></td>--}}
                                 <td class="text-center"> 
                                     @if (($l->trang_thai) == 1)
-                                    Đại ca
+                                    Quản trị
                                 @else
-                                   Đệ
+                                   Người dùng
                                    @endif
                                 </td>
                                 <td class="text-center"><a onclick="return confirm('Hãy cẩn thận với xuy nghĩ của bạn !!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Uesr_del',[$l->id]) }}">Xóa</a>
