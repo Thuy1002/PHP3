@@ -70,5 +70,11 @@ class danhmuc extends Model
     DB::table('san_pham')->where('id_danhmuc', $id)->update(['trang_thai' => 2]);
     return $res;
   }
-  
+
+
+  // 
+  public function san_pham()
+  {
+   return $this->hasMany(sanpham::class);
+  }
 }

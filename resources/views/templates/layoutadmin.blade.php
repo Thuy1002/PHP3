@@ -127,6 +127,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini fixed">
+    @include('_alert')
     <script>
         (function() {
             if (Boolean(localStorage.getItem('sidebar-toggle-collapsed'))) {

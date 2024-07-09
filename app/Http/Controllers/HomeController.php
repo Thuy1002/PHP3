@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderShipped;
 use App\Models\Banner;
+use App\Models\Cart;
 use App\Models\danhmuc;
 use App\Models\Home;
 use App\Models\sanpham;
@@ -20,6 +21,16 @@ class HomeController extends Controller
     }
     public function showsp()
     {
+        $user = auth()->user();
+        $cart = Cart::with(['cartItem.sanpham'])->where('user_id', $user->id)->first();
+
+        $totalPrice = 0;
+
+        if ($cart) {
+            foreach ($cart->cartItem as $cartItem) {
+                $totalPrice += $cartItem->so_luong * $cartItem->gia;
+            }
+        }
         // Mail::to("thuy1002dangthanh@gmail.com")->send(new OrderShipped(['ma'=>'1232311']));
         $ct_sp = new users();
 
@@ -29,7 +40,7 @@ class HomeController extends Controller
         $banner  = new Banner();
         $this->v['banner'] = $banner->LBanner();
         $this->v['Listsp'] = $obj->Listsp();
-        return view('client.trangchu', $this->v);
+        return view('client.trangchu', $this->v, compact('cart','totalPrice'));
     }
     public function shopsp(Request $request)
     {
@@ -74,7 +85,7 @@ class HomeController extends Controller
         $search  = sanpham::where('ten_sp', 'like', '%' . $request->key . '%')
             ->where('trang_thai', '!=', 2)
             ->get();
-        return view('client.search', compact('search'),$this->v);
+        return view('client.search', compact('search'), $this->v);
         // dd($search);
 
     }
@@ -86,4 +97,7 @@ class HomeController extends Controller
     //     // dd($search);
 
     // }
+
+    // cart
+
 }

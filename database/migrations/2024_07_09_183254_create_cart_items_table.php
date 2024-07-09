@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            $table -> string('ten_giang_vien');
-            $table -> date('ngay_giang_day');
-            $table -> string('dia_chi')->nullable();  
-            $table -> integer('trang_thai')->default(1);
-            $table->timestamps(); 
+            $table->integer('sanpham_id');
+            $table->integer('cart_id');
+            $table->integer('so_luong');
+            $table->integer('gia');// giá sản phẩm ban đầu
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('cart_items');
     }
 };

@@ -1,5 +1,5 @@
 @php
-$objUser = \Illuminate\Support\Facades\Auth::user();
+    $objUser = \Illuminate\Support\Facades\Auth::user();
 @endphp
 
 <!DOCTYPE html>
@@ -133,6 +133,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
 </style>
 
 <body>
+    @include('_alert')
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -192,7 +193,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="{{route('route_tim_kiem')}}" method="GET">
+                            <form action="{{ route('route_tim_kiem') }}" method="GET">
                                 <select class="input-select">
                                     <option value="0">Nhãn Hàng</option>
 
@@ -202,7 +203,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                                         </option>
                                     @endforeach --}}
                                 </select>
-                                <input  class="input" type="text" name="key" placeholder="Search here">
+                                <input class="input" type="text" name="key" placeholder="Search here">
                                 <button class="search-btn">Search</button>
                             </form>
                         </div>
@@ -231,33 +232,26 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="../clientA/img/product01.png" alt="">
+                                        @foreach ($cart->cartItem as $items)
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="../clientA/img/product01.png" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a
+                                                            href="#">{{ $items->sanpham->ten_sp }}</a>
+                                                    </h3>
+                                                    <h4 class="product-price"><span class="qty">số
+                                                            lượng:{{ $items->so_luong }}</span>Giá:
+                                                        {{ number_format($items->gia) }}</h4>
+                                                </div>
+                                                <button class="delete"><i class="fa fa-close"></i></button>
                                             </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a>
-                                                </h3>
-                                                <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="../clientA/img/product02.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a>
-                                                </h3>
-                                                <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="cart-summary">
-                                        <small>3 Item(s) selected</small>
-                                        <h5>SUBTOTAL: $2940.00</h5>
+                                        <small>tổng sản phẩm:{{ $cart->cartItem->count() }} </small>
+                                        <h5>Tổng tiền: {{ number_format($totalPrice) }}</h5>
                                     </div>
                                     <div class="cart-btns">
                                         <a href="#">View Cart</a>
@@ -308,25 +302,25 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
         </div>
         <!-- /container -->
     </nav>
- <div class="section">
-    
+    <div class="section">
+
         <div class="slideshow-container">
 
-         
+
             @foreach ($banner as $b)
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 3</div>
                     <img src="{{ Storage::url($b->hinh_anh) }}" style="height: 465px;width:1476px;">
-                    <div class="text">{{$b->ten_banner }}</div>
+                    <div class="text">{{ $b->ten_banner }}</div>
                 </div>
-            @endforeach 
-          
+            @endforeach
+
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
 
-       {{-- The dots/circles  --}}
+        {{-- The dots/circles  --}}
         <div style="text-align:center">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
@@ -335,9 +329,9 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
 
 
     </div>
- 
+
     </div>
-   
+
     <div> {{-- conten --}}
         @yield('content')
 

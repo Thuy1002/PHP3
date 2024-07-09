@@ -10,25 +10,26 @@
         <div class="container">
             <!-- row -->
             <div class="row">
+
                 <!-- Product main img -->
                 <div class="col-md-5 col-md-push-2">
                     <div id="product-main-img">
-						<div class="product-preview">
-                           <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                        <div class="product-preview">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
-                        </div>
-
-
-                        <div class="product-preview">
-                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
 
 
                         <div class="product-preview">
-                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
+                        </div>
+
+
+                        <div class="product-preview">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
 
                     </div>
@@ -39,19 +40,19 @@
                 <div class="col-md-2  col-md-pull-5">
                     <div id="product-imgs">
                         <div class="product-preview">
-                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-							<img src="{{$objitem->hinh_anh}}" alt="">
+                            <img src="{{ $objitem->hinh_anh }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                               <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                           <img src="{{Storage::url($objitem->hinh_anh)}}" alt="">
+                            <img src="{{ Storage::url($objitem->hinh_anh) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -59,76 +60,78 @@
 
                 <!-- Product details -->
                 <div class="col-md-5">
-                    <div class="product-details">
-                        <h2 class="product-name">{{$objitem->ten_sp}}</h2>
-                        <div>
-                            <div class="product-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <a class="review-link" href="#">10 Review(s) | Add your review</a>
-                        </div>
-                        <div>
-                            <h3 class="product-price">${{$objitem->gia}}<del class="product-old-price">$990.00</del></h3>
-                            <span class="product-available">In Stock</span>
-                        </div>
-                        <p>{{$objitem->mo_ta}}</p>
+                    <form class="row" action="{{ route('add-cart') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="product-details">
+                            <!-- Tên sản phẩm -->
+                            <input type="hidden" name="ten_sp" value="{{ $objitem->ten_sp }}">
+                            <h2 class="product-name">{{ $objitem->ten_sp }}</h2>
 
-                        {{-- <div class="product-options">
-                            <label>
-                                Size
-                                <select class="input-select">
-                                    <option value="0">X</option>
-                                </select>
-                            </label>
-                            <label>
-                                Color
-                                <select class="input-select">
-                                    <option value="0">Red</option>
-                                </select>
-                            </label>
-                        </div> --}}
-
-                        <div class="add-to-cart">
-                            <div class="qty-label">
-                                số lượng
-                                <div class="input-number">
-                                    <input type="number">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
+                            <!-- Đánh giá sản phẩm -->
+                            <div>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
                                 </div>
+                                <a class="review-link" href="#">10 Review(s) | Add your review</a>
                             </div>
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+
+                            <!-- Giá sản phẩm -->
+                            <input type="hidden" name="gia" value="{{ $objitem->gia }}">
+                            <div>
+                                <h3 class="product-price">${{ $objitem->gia }}<del class="product-old-price">$990.00</del>
+                                </h3>
+                                <span class="product-available">In Stock</span>
+                            </div>
+
+                            <!-- Mô tả sản phẩm -->
+                            <p>{{ $objitem->mo_ta }}</p>
+
+                            <!-- Thêm vào giỏ hàng -->
+                            <div class="add-to-cart">
+                                <div class="qty-label">
+                                    Số lượng
+                                    <div class="input-number">
+                                        <input type="number" name="quantity" min="1" value="1">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add
+                                    Cart</button>
+                            </div>
+
+                            <!-- Các nút chức năng khác -->
+                            <ul class="product-btns">
+                                <li><a href="#"><i class="fa fa-heart-o"></i> Thêm vào danh sách yêu thích</a></li>
+                                <li><a href="#"><i class="fa fa-exchange"></i> Thêm vào để so sánh</a></li>
+                            </ul>
+
+                            <!-- Thông tin thêm -->
+                            <ul class="product-links">
+                                <li>Hãng:</li>
+                                {{-- <li><a href="">{{DB::table('danh_muc')->where('id',$objitem->id_danhmuc)->first()->ten_danhmuc}}</a></li> --}}
+                            </ul>
+
+                            <!-- Chia sẻ -->
+                            <ul class="product-links">
+                                <li>Share:</li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                            </ul>
                         </div>
+                    </form>
 
-                        <ul class="product-btns">
-                            <li><a href="#"><i class="fa fa-heart-o"></i>Thêm vào danh sách yêu thích</a></li>
-                            <li><a href="#"><i class="fa fa-exchange"></i> Thêm vào để so sánh</a></li>
-                        </ul>
-
-                        <ul class="product-links">
-                            <li>Hãng:</li>
-                            {{-- <li><a href="">{{DB::table('danh_muc')->where('id',$objitem->id_danhmuc)->first()->ten_danhmuc}}</a></li> --}}
-                           
-                        </ul>
-
-                        <ul class="product-links">
-                            <li>Share:</li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                        </ul>
-
-                    </div>
                 </div>
                 <!-- /Product details -->
-
-                <!-- Product tab -->
-                <div class="col-md-12">
+            </div>
+            <!-- Product tab -->
+            {{-- <div class="col-md-12">
                     <div id="product-tab">
                         <!-- product tab nav -->
                         <ul class="tab-nav">
@@ -357,9 +360,8 @@
                         </div>
                         <!-- /product tab content  -->
                     </div>
-                </div>
-                <!-- /product tab -->
-            </div>
+                </div> --}}
+            <!-- /product tab -->
             <!-- /row -->
         </div>
         <!-- /container -->
@@ -367,7 +369,7 @@
     <!-- /SECTION -->
 
     <!-- Section -->
-    <div class="section">
+    {{-- <div class="section">
         <!-- container -->
         <div class="container">
             <!-- row -->
@@ -471,17 +473,17 @@
 							</div>
 						</div>
 					</div>
-					<!-- /product --> --}}
+					<!-- /product --> 
 
             </div>
             <!-- /row -->
         </div>
         <!-- /container -->
-    </div>
+    </div> --}}
     <!-- /Section -->
 
     <!-- NEWSLETTER -->
-    <div id="newsletter" class="section">
+    {{-- <div id="newsletter" class="section">
         <!-- container -->
         <div class="container">
             <!-- row -->
@@ -513,6 +515,6 @@
             <!-- /row -->
         </div>
         <!-- /container -->
-    </div>
+    </div> --}}
     <!-- /NEWSLETTER -->
 @endsection

@@ -36,8 +36,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('danh-muc/{id}', 'HomeController@product_dm')->name('route_Fe_dmsp');
     // Route::get('/check-out', 'CheckoutController@index');
     Route::get('/search', 'HomeController@search')->name('route_tim_kiem');
-
-
+    Route::post('add-cart' ,'CartController@addCart')->name('add-cart');
+        //endclient
     //route Admin 
     Route::get('/nguoidung', 'UsersController@index')->name('route_BackEnd_Uesr_Index');
     Route::match(['get','post'],'users/add','UsersController@add')->name('route_BackEnd_Uesr_Add');
